@@ -1,0 +1,20 @@
+<div class="container-fluid">
+<<<<<<< Updated upstream
+  <div class="row">
+    <nav-search-books class="col-12"></nav-search-books>
+  </div>
+  <div class="row">
+    <nav-left-options class="col-2"></nav-left-options>
+    <main-content class="col-10"></main-content>
+=======
+  <div class="row border-bottom">
+    <app-nav-search-books class="col-12"></app-nav-search-books>
+  </div>
+  <div class="row">
+    <app-nav-left-options class="col-2 nav-left"></app-nav-left-options>
+    <app-main-content class="col-9 border-left"></app-main-content>
+>>>>>>> Stashed changes
+  </div>
+</div>
+          
+
