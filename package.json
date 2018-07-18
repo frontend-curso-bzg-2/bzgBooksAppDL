@@ -1,9 +1,11 @@
 {
   "name": "bzg-books-app-angular",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Bizagi 2nd Group - Books App",
+  "author": "Juan Duarte,Alejandro Leon",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
