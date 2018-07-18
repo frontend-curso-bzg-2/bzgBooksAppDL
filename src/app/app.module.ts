@@ -9,6 +9,8 @@ import { NavLeftTopComponent } from './nav-left-top/nav-left-top.component';
 import { MainItemHomeComponent } from './main-item-home/main-item-home.component';
 import { MainItemCollectionsComponent } from './main-item-collections/main-item-collections.component';
 import { MainItemFavoritesComponent } from './main-item-favorites/main-item-favorites.component';
+import { RouterModule } from '@angular/router';
+import {routes} from './routes';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { MainItemFavoritesComponent } from './main-item-favorites/main-item-favo
     MainItemFavoritesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
