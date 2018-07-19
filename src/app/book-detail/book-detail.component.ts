@@ -12,13 +12,15 @@ export class BookDetailComponent implements OnInit {
   book: any;
 
   constructor(private router: ActivatedRoute) {
+    this.book = {};
     let id:string;
     //id = this.router.snapshot.paramMap.get('id');
     this.router.params.subscribe( (params: Params) => { id = params.id });
-    this.book = books.items.find( item => {return item.id = id});
-   }
+    this.book = books.items.find( item => {return item.id == id});
+  }
 
   ngOnInit() {
+    
   }
 
 }
