@@ -11,6 +11,7 @@ import { MainItemCollectionsComponent } from './main-item-collections/main-item-
 import { MainItemFavoritesComponent } from './main-item-favorites/main-item-favorites.component';
 import { RouterModule } from '@angular/router';
 import {routes} from './routes';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {routes} from './routes';
     NavLeftTopComponent,
     MainItemHomeComponent,
     MainItemCollectionsComponent,
-    MainItemFavoritesComponent
+    MainItemFavoritesComponent,
+    BookDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -20,13 +20,13 @@
             <h4 class="card-title">{{book.volumeInfo.title}}</h4>
             <p class="card-text">{{book.volumeInfo.description}}</p>                        
           </div>
-          <div class="card-footer">
-              <a href="#/detail/id:#ID#" class="btn btn-primary">Ver</a>
-              <i class="fa fa-heart float-right"></i>
-              <i class="fa fa-star float-right"></i>              
-            </div>
-        </div>
+        <div class="card-footer">
+            <a [routerLink]="['../detail', book.id]" class="btn btn-primary">Ver</a>
+            <i class="fa fa-heart float-right"></i>
+            <i class="fa fa-star float-right"></i>              
+          </div>
       </div>
+    </div>
     </div>
   </section>
 </section>

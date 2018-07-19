@@ -1,0 +1,13 @@
+<section id="canvas">
+  <div class="card-deck">
+    <div class="card mb-4 shadowStyle cardStyle">
+      <div class="view overlay">
+        <img class="card-img-top" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="Card image cap">            
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">{{book.volumeInfo.title}}</h4>
+        <p class="card-text">{{book.volumeInfo.description}}</p>                        
+      </div>
+    </div>
+  </div>
+</section>
