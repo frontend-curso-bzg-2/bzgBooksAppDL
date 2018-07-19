@@ -18,7 +18,7 @@
           </div>
           <div class="card-body">
             <h4 class="card-title">{{book.volumeInfo.title}}</h4>
-            <p class="card-text">{{book.volumeInfo.description}}</p>                        
+            <p class="card-text cardTextStyle">{{book.volumeInfo.description}}</p>                        
           </div>
         <div class="card-footer">
             <a [routerLink]="['../detail', book.id]" class="btn btn-primary">Ver</a>
