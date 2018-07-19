@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from './user';
 
 @Component({
   selector: 'nav-left-options',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavLeftOptionsComponent implements OnInit {
 
+  user: User;
+
   constructor() { }
 
   ngOnInit() {
+    this.user = {
+      name: "Juan Alejandro"
+    }
   }
 
 }
