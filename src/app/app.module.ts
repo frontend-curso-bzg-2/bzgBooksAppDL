@@ -12,6 +12,7 @@ import { MainItemFavoritesComponent } from './main-item-favorites/main-item-favo
 import { RouterModule } from '@angular/router';
 import {routes} from './routes';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { LoginContentComponent } from './login-content/login-content.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
     MainItemHomeComponent,
     MainItemCollectionsComponent,
     MainItemFavoritesComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    LoginContentComponent
   ],
   imports: [
     BrowserModule,
