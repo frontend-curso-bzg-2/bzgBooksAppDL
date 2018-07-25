@@ -7,19 +7,16 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 export const routes: Routes =[
     {
         path: '',
-        component:  MainItemHomeComponent
+        redirectTo: 'main/books',
+        pathMatch: 'full'
     },
     {
-        path: 'collections',
-        component: MainItemCollectionsComponent
+        path: 'main',
+        loadChildren:  './core/core.module#CoreModule'
     },
     {
-        path: 'favorites',
-        component: MainItemFavoritesComponent
-    },
-    {
-        path: 'detail/:id',
-        component: BookDetailComponent
+        path: 'login',
+        loadChildren: './authentication/authentication.module#AuthenticationModule'
     },
     {
         path: '**',
