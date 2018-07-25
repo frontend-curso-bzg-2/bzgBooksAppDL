@@ -1,3 +1,33 @@
-<p>
-  main-item-home works!
-</p>
+
+<section class="container">
+  <section class="navigationBar">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+      </ol>
+    </nav>
+  </section>
+  
+  <section id="canvas">
+    <div class="card-deck">
+      <div *ngFor="let book of booksList">
+        <div class="card mb-4 shadowStyle cardStyle">
+          <div class="view overlay">
+            <img class="card-img-top" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="Book image">            
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{book.volumeInfo.title}}</h4>
+            <p class="card-text cardTextStyle">{{book.volumeInfo.description}}</p>                        
+          </div>
+        <div class="card-footer">
+            <a [routerLink]="['../detail', book.id]" class="btn btn-primary">Ver</a>
+            <i class="fa fa-heart float-right"></i>
+            <i class="fa fa-star float-right"></i>              
+          </div>
+      </div>
+    </div>
+    </div>
+  </section>
+</section>

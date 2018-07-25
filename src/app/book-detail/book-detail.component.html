@@ -1,12 +1,32 @@
+<section class="navigationBar">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Library</a></li>
+      <li class="breadcrumb-item"><a href="#">Data</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Book {{book.volumeInfo.pageCount}}</li>
+    </ol>
+  </nav>
+</section>
 <section id="canvas">
-  <div class="card-deck shadowStyle cardStyle">
-    <div class="card mb-4">
-      <div class="view overlay">
-        <img class="card-img-top" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="Card image cap">            
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col-6">
+        <h4 class="">{{book.volumeInfo.title}}</h4>
+        <h5>Autor(es):</h5>        
+        <span class="italic" *ngFor="let author of book.volumeInfo.authors">
+           {{author}}
+           <br>
+        </span>
+        <h5>Año:</h5>        
+        <span class="italic">          
+          {{book.volumeInfo.publishedDate}}          
+        </span>
+        <h5>Descripción:</h5>        
+        <p class="cardTextStyle">{{book.volumeInfo.description}}</p>                        
       </div>
-      <div class="card-body">
-        <h4 class="card-title">{{book.volumeInfo.title}}</h4>
-        <p class="card-text cardTextStyle">{{book.volumeInfo.description}}</p>                        
+      <div class="col-6 imgContainer">        
+          <img class="shadowStyle imgStyle" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="Book image">        
       </div>
     </div>
   </div>
