@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {User} from '../nav-left-options/user';
+import {User} from '../../../authentication/models/user';
 
 @Component({
   selector: 'nav-left-top',
