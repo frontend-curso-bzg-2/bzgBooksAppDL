@@ -5,19 +5,19 @@ import { routes } from "./routes.core";
 
 import { CoreComponent } from './containers/core/core.component';
 import { MainContentComponent } from "./containers/main-content/main-content.component";
-import { MainItemHomeComponent } from "./containers/main-item-home/main-item-home.component";
 import { NavSearchBooksComponent } from "./containers/nav-search-books/nav-search-books.component";
-
 import { NavLeftOptionsComponent } from "./containers/nav-left-options/nav-left-options.component";
-import { NavLeftTopComponent } from "./containers/nav-left-top/nav-left-top.component";
+
+import { NavLeftTopComponent } from "./components/nav-left-top/nav-left-top.component";
+import { NavMenuLeftComponent } from './components/nav-menu-left/nav-menu-left.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CoreComponent, MainContentComponent, MainItemHomeComponent, NavSearchBooksComponent,
-    NavLeftOptionsComponent,NavLeftTopComponent
+  declarations: [CoreComponent, MainContentComponent, NavSearchBooksComponent,
+    NavLeftOptionsComponent,NavLeftTopComponent, NavMenuLeftComponent
   ],
   exports: [CoreComponent]
 })
