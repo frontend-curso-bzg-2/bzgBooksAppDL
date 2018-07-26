@@ -1,4 +1,4 @@
-<aside [@asideCollapse]="asideState" class="border-right navLeftContainer">
+<aside [@asideCollapse]="asideState" class="border-right navLeftContainer" [ngClass]="(asideState == 'close')? 'aside-close': ''">
     <nav-left-top [user]="user" [ngClass]="(asideState == 'close') ? 'aside-close' : ''"></nav-left-top>
     <nav-menu-left></nav-menu-left>
 </aside>
