@@ -9,10 +9,12 @@ import {User} from '../../../authentication/models/user';
 export class NavLeftTopComponent implements OnInit {
 
   @Input() user: User;
+  nowDate: Date;
 
   constructor() { }
 
   ngOnInit() {
+    this.nowDate = new Date();
   }
 
 }

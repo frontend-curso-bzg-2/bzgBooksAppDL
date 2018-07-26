@@ -1,27 +1,27 @@
-<nav>
-  <ul class="list-unstyled">
+<nav [ngClass]="(asideState == 'close') ? 'aside-close' : ''">
+  <ul class="list-unstyled nav-left">
       <li >
           <a routerLink="/">
             <i class="fa fa-home"></i>
-            Inicio
+            <span>Inicio</span>
           </a>
       </li>
       <li >
         <a routerLink="collections">
           <i class="fa fa-book"></i>
-          Colección
+          <span>Colección</span>
         </a>
       </li>
       <li >
         <a routerLink="favorites">
-            <i class="fa fa-star"></i>
-            Favoritos
+            <i class="fa fa-star"></i>                  
+            <span>Favoritos</span>
         </a>
       </li>
       <li >
-          <a href="#">
+          <a routerLink="exit">
             <i class="fa fa-power-off"></i>
-            Salir
+            <span>Salir</span>
           </a>
       </li>            
     </ul>      
