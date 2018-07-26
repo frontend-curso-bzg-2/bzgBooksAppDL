@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     CoreModule
   ],
