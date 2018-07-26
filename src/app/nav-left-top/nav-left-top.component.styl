@@ -1,6 +1,7 @@
 
 .background-top
 	background-color #e9ecef
+	margin-right 0px
 
 .userImage 
 	width: 50px;
@@ -14,7 +15,18 @@
 	box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 
 .userName
-	margin-top: 15px;
-	padding-top: 10px;
-	display: flex;	
-	justify-content: center;
+	margin-top 15px
+	display flex
+	justify-content center
+
+.userData
+	padding-left 0px
+	padding-right 0px
+
+:host-context(.aside-close)
+	.userData
+		display none
+	.userImage 
+		width 40px
+		height 30px
+		font-size 28px

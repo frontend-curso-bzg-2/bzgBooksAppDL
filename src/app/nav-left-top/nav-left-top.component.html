@@ -1,6 +1,9 @@
 <div class="row background-top">
-  <div class="userImage">
+  <div class="col-3 userImage">
     <i class="fa fa-user-circle bigicon" aria-hidden="true"></i>      
   </div>
-  <h5 class="userName">{{user.name}}</h5>
+  <div class="col-7 userData">
+    <h5 class="userName">{{user.name}}</h5>
+    <span>{{nowDate | date : "shortDate"}}</span>
+  </div>  
 </div>    

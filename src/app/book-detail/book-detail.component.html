@@ -1,9 +1,8 @@
 <section class="navigationBar">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item"><a href="#">Library</a></li>
-      <li class="breadcrumb-item"><a href="#">Data</a></li>
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item"><a routerLink="/">Library</a></li>      
       <li class="breadcrumb-item active" aria-current="page">Book {{book.volumeInfo.pageCount}}</li>
     </ol>
   </nav>
@@ -14,14 +13,13 @@
       <div class="col-6">
         <h4 class="">{{book.volumeInfo.title}}</h4>
         <h5>Autor(es):</h5>        
-        <span class="italic" *ngFor="let author of book.volumeInfo.authors">
-           {{author}}
-           <br>
-        </span>
-        <h5>Año:</h5>        
-        <span class="italic">          
-          {{book.volumeInfo.publishedDate}}          
-        </span>
+        <ul *ngFor="let author of book.volumeInfo.authors">
+          <li class="italic">{{author}}</li>
+        </ul>        
+        <h5>Año:</h5>    
+        <ul>
+          <li class="italic">{{book.volumeInfo.publishedDate}}</li>
+        </ul>            
         <h5>Descripción:</h5>        
         <p class="cardTextStyle">{{book.volumeInfo.description}}</p>                        
       </div>

@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
+  stateAside : string;
+
+  closeAside(state){
+    this.stateAside=state;
+  }
 }

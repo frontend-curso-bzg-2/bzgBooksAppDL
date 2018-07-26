@@ -9,10 +9,12 @@ import {User} from '../nav-left-options/user';
 export class NavLeftTopComponent implements OnInit {
 
   @Input() user: User;
+  nowDate: Date;
 
   constructor() { }
 
   ngOnInit() {
+    this.nowDate = new Date();
   }
 
 }
