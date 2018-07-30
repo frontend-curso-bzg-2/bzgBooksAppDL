@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row border-bottom">
-    <nav-search-books class="col-12"></nav-search-books>
+    <nav-search-books class="col-12" (actionAside)="closeAside($event)"></nav-search-books>
   </div>
   <div class="row">
-    <nav-left-options class="col-2 nav-left"></nav-left-options>
-    <main-content class="col-9  border-left">
+    <nav-left-options class="col-2 nav-left" [asideState]="stateAside"></nav-left-options>
+    <main-content class="col-9  border-left" [ngClass]="(stateAside == 'close')? 'main-collape': ''">
     </main-content>    
   </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagesService } from '../../../alerts/services/messages.service';
 
 @Component({
   selector: 'core',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoreComponent implements OnInit {
 
-  constructor() { }
+  stateAside: string;
+
+  constructor(private alertServices:MessagesService) { }
 
   ngOnInit() {
+    window.addEventListener("online", this.updateIndicator.bind(this));
+    window.addEventListener("offline", this.updateIndicator.bind(this));
   }
 
+  closeAside(state){
+    this.stateAside = state;
+  }
+
+  updateIndicator(event){
+    if(event.type=="online"){
+      this.alertServices.message("Se ha establecido la conexión.","success");
+    }else if(event.type=="offline"){
+      this.alertServices.message("Se ha perdido la conexión.","error");
+    }
+  }
 }
