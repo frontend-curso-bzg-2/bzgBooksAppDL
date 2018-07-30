@@ -10,12 +10,17 @@ import { BooksListService } from "../../services/list/books-list.service";
 export class BooksMainComponent implements OnInit {
 
   booksList: any[];
+  
   constructor(private booksService:BooksListService) { 
     this.booksList = [];
   }
 
   ngOnInit() {
-    this.booksService.getBookList().subscribe(books=>{this.booksList = books});
+    this.booksService.getBookList().subscribe(
+      books=>{
+          this.booksList = books
+      }
+    );
   }
 
 }
