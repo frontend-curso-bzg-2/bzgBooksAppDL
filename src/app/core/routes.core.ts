@@ -20,5 +20,8 @@ export const routes: Routes = [
             },
             {path: '', redirectTo: '/main/books', pathMatch: 'full'}
         ]
+    },
+    {
+        path: '', redirectTo: 'main', pathMatch: 'full'
     }
 ];
