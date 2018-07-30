@@ -5,7 +5,7 @@ import { BookDetailComponent } from "./containers/book-detail/book-detail.compon
 
 export const routes: Routes = [
     {
-        path: 'list',
+        path: '',
         component: BooksMainComponent
     },
     {
@@ -13,6 +13,6 @@ export const routes: Routes = [
         component: BookDetailComponent
     },
     {
-        path: '**', redirectTo: 'list', pathMatch: 'full'
+        path: '**', redirectTo: '', pathMatch: 'full'
     }
 ];

@@ -10,6 +10,7 @@ import { MainItemCollectionsComponent } from './containers/main-item-collections
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MainItemCollectionsComponent]
+  declarations: [MainItemCollectionsComponent],
+  exports: [MainItemCollectionsComponent]
 })
 export class CollectionsModule { }

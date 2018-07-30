@@ -3,10 +3,10 @@ import { MainItemCollectionsComponent } from "./containers/main-item-collections
 
 export const routes: Routes = [
     {
-        path: 'list',
+        path: '',
         component: MainItemCollectionsComponent
     },
     {
-        path: '**', redirectTo: 'list', pathMatch: 'full'
+        path: '**', redirectTo: '', pathMatch: 'full'
     }
 ];

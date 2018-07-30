@@ -3,10 +3,10 @@ import { MainItemFavoritesComponent } from "./containers/main-item-favorites/mai
 
 export const routes: Routes = [
     {
-        path: 'list',
+        path: '',
         component: MainItemFavoritesComponent
     },
     {
-        path: '**', redirectTo: 'list', pathMatch: 'full'
+        path: '**', redirectTo: '', pathMatch: 'full'
     }
 ];

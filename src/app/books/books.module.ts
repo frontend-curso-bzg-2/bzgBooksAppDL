@@ -11,6 +11,7 @@ import { BookDetailComponent } from "./containers/book-detail/book-detail.compon
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [BooksMainComponent, BookDetailComponent]
+  declarations: [BooksMainComponent, BookDetailComponent],
+  exports: [BooksMainComponent]
 })
 export class BooksModule { }

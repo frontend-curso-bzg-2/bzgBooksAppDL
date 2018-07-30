@@ -15,6 +15,7 @@ export class BooksMainComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.booksList = books.items;
     //this.booksService.getBookList().subscribe(books=>{this.booksList = books});
   }
 
