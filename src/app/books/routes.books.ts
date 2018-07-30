@@ -13,6 +13,6 @@ export const routes: Routes = [
         component: BookDetailComponent
     },
     {
-        path: '**', redirectTo: 'list', pathMatch: 'full'
+        path: '', redirectTo: 'list', pathMatch: 'full'
     }
 ];

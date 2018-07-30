@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import {  HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "./api-data/api-books-demo";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
