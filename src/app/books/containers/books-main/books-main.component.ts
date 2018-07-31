@@ -18,10 +18,11 @@ export class BooksMainComponent implements OnInit {
   ngOnInit() {
     //this.booksList = books.items;
     this.booksService.getBookList().subscribe(
-      books=>{
+      (books:any)=>{
+        if(books)
           this.booksList = books
       }
     );
   }
-
+  
 }

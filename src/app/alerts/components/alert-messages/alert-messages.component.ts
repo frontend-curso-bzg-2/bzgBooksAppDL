@@ -30,4 +30,8 @@ export class AlertMessagesComponent implements OnInit {
     );
   }
 
+  closeMessage(){
+    this.classType = "hideAlert";    
+  }
+
 }

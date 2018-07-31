@@ -20,6 +20,6 @@ export class NavSearchBooksComponent implements OnInit {
   closeAside(){
     this.state = (this.state === 'close') ? 'open' : 'close';
     this.actionAside.emit(this.state);
-    //onsole.log("emit...");
+    //console.log("emit...");
   }
 }
