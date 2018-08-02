@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IAuth, Auth } from "../../models/user";
 
 @Component({
@@ -7,7 +7,7 @@ import { IAuth, Auth } from "../../models/user";
   styleUrls: ['./login-form.component.styl']
 })
 export class LoginFormComponent implements OnInit {
-
+  @Output() submitted = new EventEmitter<IAuth>();
   login:IAuth;
 
   constructor() {
@@ -19,6 +19,7 @@ export class LoginFormComponent implements OnInit {
 
   submit(){
     console.log(this.login);
+    this.submitted.emit(this.login);
   }
 
 }

@@ -1,14 +1,11 @@
 import { Routes  } from '@angular/router';
+import { AuthGuardService } from "./authentication/services/guards/auth-guard.service";
 
 export const routes: Routes =[
     {
         path: '',
-        redirectTo: 'main/books',
-        pathMatch: 'full'
-    },
-    {
-        path: 'login',
-        loadChildren: './authentication/authentication.module#AuthenticationModule'
+        loadChildren: './core/core.module#CoreModule',
+        canActivate: [AuthGuardService]
     },
     {
         path: '**',
