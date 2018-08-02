@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row ">
+      <div class="col-6">
+        <div class="border border-dark inputLeftContainer">
+            <form (ngSubmit)="submit()" #loginform="ngForm">
+              <h4>Sign</h4>
+              <!-- div class="form-group">
+                  <input type="text" class="form-control inputWidth" id="userNameInput" placeholder="Username">
+                </div -->
+              <div class="form-group">                      
+                <input type="email" class="form-control inputWidth" id="emailInput" placeholder="email@example.com" [(ngModel)]="login.email" name="email" #email="ngModel">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control inputWidth" id="passwordInput" placeholder="Password" [(ngModel)]="login.password" name="password" #password="ngModel">
+              </div>                    
+              <!-- div class="form-group">                      
+                <input type="password" class="form-control inputWidth" id="password2Input" placeholder="Re - type password">
+              </div -->    
+              <div>
+                <button type="submit" class="btn btn-primary socialButton">Sign me up</button>
+              </div>              
+          </form>
+        </div>
+      </div>
+      <div class="col-6 rightContent">
+          <h4>Sign in with your social network</h4>
+          <button type="button" class="btn btn-primary socialButton">Log in with Facebook</button>
+          <button type="button" class="btn btn-primary socialButton">Log in with Twitter</button>
+          <button type="button" class="btn btn-primary socialButton">Log in with Google+</button>
+      </div>
+    </div>
+  </div>

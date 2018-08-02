@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainItemCollectionsComponent implements OnInit {
 
+  booksList:any[];
   
   constructor() { 
     
