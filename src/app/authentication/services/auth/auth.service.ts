@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { IAuth } from '../../models/user';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -9,12 +8,13 @@ export class AuthService {
 
   constructor(private router:Router) { }
 
-  login(auth: IAuth){
+  login(auth: any){
     localStorage.setItem('bzbooksappdl',JSON.stringify(auth));
     this.router.navigate(["/main/books"]);
   }
 
   logout(){
     localStorage.removeItem('bzbooksappdl');
+    this.router.navigate(["/"]);
   }
 }
