@@ -13,7 +13,7 @@ import { AuthService } from '../../../authentication/services/auth/auth.service'
         width: "50px"
       })),
       state('open', style({
-        width: "200px"
+        width: "100%"
       })),
       transition('open => close',animate('100ms ease-out')),
       transition('close => open',animate('100ms ease-in'))

@@ -14,13 +14,14 @@ export const routes: Routes = [
             },
             {
                 path: 'collections',
-                loadChildren: '../collections/collections.module#CollectionsModule'
+                loadChildren: '../collections/collections.module#CollectionsModule',
+                canActivate: [AuthGuardService]
             },
             {
                 path: 'favorites',
-                loadChildren: '../favorites/favorites.module#FavoritesModule'
-            },
-            {path: '', redirectTo: '/main/books', pathMatch: 'full'}
+                loadChildren: '../favorites/favorites.module#FavoritesModule',
+                canActivate: [AuthGuardService]
+            }            
         ]
     },
     {
