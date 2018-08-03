@@ -31,7 +31,7 @@ export class BooksDBService implements InMemoryDbService{
                  },
                  "pageCount": 186,
                  "printType": "BOOK",
-                 "averageRating": 4.5,
+                 "averageRating": 3.2,
                  "ratingsCount": 2,
                  "maturityRating": "NOT_MATURE",
                  "allowAnonLogging": false,

@@ -8,6 +8,7 @@ import { IAuth, Auth } from "../../models/user";
 })
 export class LoginFormComponent implements OnInit {
   @Output() submitted = new EventEmitter<IAuth>();
+  @Output() submittedGoogle = new EventEmitter<boolean>();
   login:IAuth;
 
   constructor() {
@@ -20,6 +21,10 @@ export class LoginFormComponent implements OnInit {
   submit(){
     console.log(this.login);
     this.submitted.emit(this.login);
+  }
+
+  loginGoogle(){
+    this.submittedGoogle.emit(true);
   }
 
 }

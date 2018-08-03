@@ -17,4 +17,11 @@ export class AuthService {
     localStorage.removeItem('bzbooksappdl');
     this.router.navigate(["/"]);
   }
+
+  loginGoogle(selected: boolean){
+    if(selected){
+      //this.authFire.auth.signInWithPopup(new Auth.GoogleAuthProvider).then
+    }
+
+  }
 }

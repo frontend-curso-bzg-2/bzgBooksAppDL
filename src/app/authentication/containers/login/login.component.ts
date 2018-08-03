@@ -30,4 +30,8 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  loginGoogle(event:boolean){
+    this.authService.loginGoogle(event);
+  }
+
 }

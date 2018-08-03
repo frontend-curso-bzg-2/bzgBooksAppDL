@@ -23,8 +23,15 @@
         <h5>Descripción:</h5>        
         <p class="cardTextStyle">{{book.volumeInfo.description}}</p>                        
       </div>
-      <div class="col-6 imgContainer">        
-          <img class="shadowStyle imgStyle" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="Book image">        
+      <div class="col-6">     
+          <div class="imgContainer">
+              <img class="shadowStyle imgStyle" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="Book image">        
+          </div>             
+          <div class="stars">
+            <a *ngFor="let item of starList ">  
+              <i class="fa" [ngClass]="{'fa-star-o':!item,'fa-star': item}"></i>   
+            </a> 
+          </div>
       </div>
     </div>
   </div>
