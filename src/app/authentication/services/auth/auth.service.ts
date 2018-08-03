@@ -11,7 +11,7 @@ export class AuthService {
 
   login(auth: IAuth){
     localStorage.setItem('bzbooksappdl',JSON.stringify(auth));
-    this.router.navigate(["/"]);
+    this.router.navigate(["/main/books"]);
   }
 
   logout(){

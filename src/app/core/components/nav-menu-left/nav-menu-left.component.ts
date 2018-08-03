@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../../authentication/services/auth/auth.service";
 
 @Component({
   selector: 'nav-menu-left',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavMenuLeftComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { 
+
+  }
 
   ngOnInit() {
+  }
+
+  logout(){
+    this.authService.logout();
   }
 
 }
