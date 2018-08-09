@@ -3,6 +3,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from "angularfire2/database";
+
+import {StoreModule} from {"@ngrx/store"};
+import {StoreDevtoolsModule} from {"@ngrx/store-devtools"};
+
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { BooksDBService } from "./api-data/api-books-demo";
@@ -26,7 +31,10 @@ import { environment } from "../environments/environment";
     HttpModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    StoreModule,
+    StoreDevtoolsModule
     /*HttpClientInMemoryWebApiModule.forRoot(
       BooksDBService, { dataEncapsulation: false, delay: 1500 }
     )*/
