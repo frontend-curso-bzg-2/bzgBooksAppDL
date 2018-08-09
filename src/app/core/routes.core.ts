@@ -6,6 +6,7 @@ export const routes: Routes = [
     {
         path: 'main',
         component: CoreComponent,
+        canActivate: [AuthGuardService],
         children: [
             {
                 path: 'books',
