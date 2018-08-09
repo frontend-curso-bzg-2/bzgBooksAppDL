@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import {User} from '../../../authentication/models/user';
-import { AuthService } from '../../../authentication/services/auth/auth.service';
+import {User} from 'firebase/app';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'nav-left-options',
@@ -25,16 +25,15 @@ export class NavLeftOptionsComponent implements OnInit {
   @Input() asideState: string;
   user: User;
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AngularFireAuth) { }
 
   ngOnInit() {
-    this.user = {
-      name: "Juan Alejandro"
-    }
-  }
-
-  logout(){
-    this.authService.logout();
+    this.authService.authState
+    .subscribe(
+      user => {        
+        this.user = user;
+      }
+    );
   }
 
 }

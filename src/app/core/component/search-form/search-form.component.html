@@ -1,0 +1,9 @@
+<form id="searchForm">
+  <div class="input-group rounded-right inputSearch">
+      <input id="inputSearch" type="text" class="form-control" name="searchText" 
+        title="Buscador" placeholder="Buscar..." (change)="searchBooks(search.value)"/>
+      <div class="input-group-append">
+          <a class="btn btn-primary" (click)="searchBooks(search.value)"><i class="fa fa-search whiteIcon"></i></a>
+      </div>
+  </div>
+</form>
