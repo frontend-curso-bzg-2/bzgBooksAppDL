@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <div class="row border-bottom">
-    <nav-search-books class="col-12" (actionAside)="closeAside($event)"></nav-search-books>
+    <nav-search-books class="col-12"></nav-search-books>
   </div>
   <div class="row">
-    <nav-left-options class="col-3 nav-left" [asideState]="stateAside"></nav-left-options>
+    <nav-left-options class="col-3 nav-left" [asideState]="stateAside$ | async"></nav-left-options>
     <main-content class="col-9"></main-content>    
   </div>
 </div>

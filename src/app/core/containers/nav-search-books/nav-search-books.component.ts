@@ -1,7 +1,9 @@
 import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { BooksListService } from "../../../books/services/list/books-list.service";
-import {User} from 'firebase/app';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs';
+import { Store, select } from "@ngrx/store";
+import * as layout from "../../actions/layout";
+import * as fromRoot from "../../../reducer/reducer";
 
 @Component({
   selector: 'nav-search-books',
@@ -10,27 +12,22 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class NavSearchBooksComponent implements OnInit {
 
-  @Output() actionAside = new EventEmitter<string>();
-  state : string;
-  user: User;
+  actionAside$:Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav));
+  state : string = "open";
 
-  constructor(private bookListService:BooksListService, private authService:AngularFireAuth) { 
+  constructor(private bookListService:BooksListService, private store: Store<fromRoot.State>) { 
     this.state = 'open';
   }
 
   ngOnInit() {
-    this.authService.authState
-    .subscribe(
-      user => {        
-        this.user = user;
-        //console.log(this.user);
-      }
-    );
   }
 
   closeAside(){
-    this.state = (this.state === 'close') ? 'open' : 'close';
-    this.actionAside.emit(this.state);
+    if(this.state === 'close') {
+      this.state='open'; this.store.dispatch(new layout.OpenSideNav());
+    }else {
+      this.state = 'close'; this.store.dispatch(new layout.CloseSideNav()); 
+    } 
   }
 
   searchText(event:string){

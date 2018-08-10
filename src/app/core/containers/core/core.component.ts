@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MessagesService } from '../../../alerts/services/messages.service';
+import { Store, select } from "@ngrx/store";
+import * as fromRoot from "../../../reducer/reducer";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'core',
@@ -8,17 +11,13 @@ import { MessagesService } from '../../../alerts/services/messages.service';
 })
 export class CoreComponent implements OnInit {
 
-  stateAside: string;
+  stateAside$:Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav));
 
-  constructor(private alertServices:MessagesService) { }
+  constructor(private alertServices:MessagesService, private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
     window.addEventListener("online", this.updateIndicator.bind(this));
     window.addEventListener("offline", this.updateIndicator.bind(this));
-  }
-
-  closeAside(state){
-    this.stateAside = state;
   }
 
   updateIndicator(event){

@@ -5,8 +5,8 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 
-import {StoreModule} from "@ngrx/store";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import { StoreModule } from "@ngrx/store";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
@@ -18,6 +18,7 @@ import { CoreModule } from './core/core.module'
 import { routes } from './routes';
 import { AppComponent } from './app.component';
 import { environment } from "../environments/environment";
+import { reducers, metaReducer } from './reducer/reducer';
 
 @NgModule({
   declarations: [
@@ -34,10 +35,19 @@ import { environment } from "../environments/environment";
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     StoreModule,
-    StoreDevtoolsModule
+    StoreDevtoolsModule,
     /*HttpClientInMemoryWebApiModule.forRoot(
       BooksDBService, { dataEncapsulation: false, delay: 1500 }
     )*/
+    StoreModule.forRoot(reducers, {metaReducers: metaReducer}),
+    StoreDevtoolsModule.instrument(
+      {
+        name: 'Bzg Books App',
+        logOnly: environment.production,
+        maxAge: 30
+      }
+      
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
