@@ -24,7 +24,6 @@ export class NavSearchBooksComponent implements OnInit {
   }
 
   searchText(event:string){
-    //this.bookListService.searchBooks(event, 0, 20);
-    this.bookListService.searchBooks(event);
+    this.bookListService.searchBooks(event, 0, 20);    
   }
 }
