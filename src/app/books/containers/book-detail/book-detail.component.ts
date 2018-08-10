@@ -44,8 +44,8 @@ export class BookDetailComponent implements OnInit {
 
   }
 
-  addFavorite(book) {
-    this.bookService.addFavorites(book);
+  addFavorite() {
+    this.bookService.addFavorites(this.book);
   }
 
 }

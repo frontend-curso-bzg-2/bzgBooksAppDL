@@ -10,7 +10,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   animations: [
     trigger('asideCollapse', [
       state('close', style({
-        width: "50px"
+        width: "80px"
       })),
       state('open', style({
         width: "100%"
