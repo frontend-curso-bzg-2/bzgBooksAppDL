@@ -4,7 +4,8 @@
     <i class="fa fa-user-circle bigicon userImage" aria-hidden="true" [ngClass]="(user?.photoURL)? 'noPicture': ''"></i>      
   </div>
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-7 userData">
-    <h5 class="userName">{{user?.displayName}}</h5>
-    <h5 class="date">{{nowDate | date : "shortDate"}}</h5>
+    <p class="userName">{{user?.displayName}}</p>
+    <p class="email">{{user?.email}}</p>
+    <p class="date">{{nowDate | date : "shortDate"}}</p>
   </div>  
 </div>    

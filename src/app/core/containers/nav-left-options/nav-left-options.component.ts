@@ -32,6 +32,7 @@ export class NavLeftOptionsComponent implements OnInit {
     .subscribe(
       user => {        
         this.user = user;
+        //console.log(this.user);
       }
     );
   }
