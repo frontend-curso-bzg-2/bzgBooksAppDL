@@ -17,8 +17,20 @@ export class BooksListService {
 
   url = environment.apiBooks;
   booksList: Subject<BookList> = new Subject();
+  favsRef: AngularFireList<any>;
+  user: firebase.User;
 
-  constructor(private http: HttpClient, private alertService: MessagesService) { }
+  constructor(private http: HttpClient, private alertService: MessagesService, private authFire: AngularFireAuth,
+    rdb: AngularFireDatabase) { 
+    this.booksList.next({ kind: "", totalItems: 0, items: [] });
+    authFire.authState
+      .subscribe(
+        user => {
+          this.user = user;
+          this.favsRef = rdb.list('favorites/' + this.user.uid);
+        }
+      );
+  }
 
   searchBooks(text: string, startIndex?: number, maxResults?: number) {
     if(text){
@@ -50,6 +62,9 @@ export class BooksListService {
       );
   }
     
+  addFavorites(book: any) {
+    this.favsRef.push(book).then(_ => this.alertService.message("Agregado a Favoritos", "success"));
+  } 
 
   private handleError<T>(operation="operation", result?: T){
     return (error:any):Observable<T> => {

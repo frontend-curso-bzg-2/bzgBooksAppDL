@@ -24,9 +24,9 @@ export class BookDetailComponent implements OnInit {
     this.router.params.subscribe( (params: Params) => { 
       id = params.id 
       this.bookService.getBook(id).subscribe(
-        (books:any)=>{
-          if(books[0]){
-            this.book = books[0];            
+        books => {
+          if (books) {
+            this.book = books;
             let rating=this.book.volumeInfo.averageRating;
             if(rating){
               let adjustedrating=Math.round(rating);              
@@ -34,6 +34,7 @@ export class BookDetailComponent implements OnInit {
                   this.starList[i]=true;        
               }              
             }
+ 
           }
         }
       );
@@ -41,6 +42,10 @@ export class BookDetailComponent implements OnInit {
     
     //this.book = books.items.find( item => {return item.id = id});
 
+  }
+
+  addFavorite(book) {
+    this.bookService.addFavorites(book);
   }
 
 }

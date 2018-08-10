@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink="/main/books">Home</a></li>
       <li class="breadcrumb-item"><a routerLink="/main/books">Library</a></li>      
-      <li class="breadcrumb-item active" aria-current="page">Book {{book.volumeInfo.pageCount}}</li>
+      <li class="breadcrumb-item active" aria-current="page">Book {{book.volumeInfo?.pageCount}}</li>
     </ol>
   </nav>
 </section>
@@ -11,21 +11,21 @@
   <div class="container-fluid">
     <div class="row ">
       <div class="col-6">
-        <h4 class="">{{book.volumeInfo.title}}</h4>
+        <h4 class="">{{book.volumeInfo?.title}}</h4>
         <h5>Autor(es):</h5>        
         <ul *ngFor="let author of book.volumeInfo.authors">
           <li class="italic">{{author}}</li>
         </ul>        
         <h5>Año:</h5>    
         <ul>
-          <li class="italic">{{book.volumeInfo.publishedDate}}</li>
+          <li class="italic">{{book.volumeInfo?.publishedDate}}</li>
         </ul>            
         <h5>Descripción:</h5>        
-        <p class="cardTextStyle">{{book.volumeInfo.description}}</p>                        
+        <p class="cardTextStyle">{{book.volumeInfo?.description}}</p>                        
       </div>
       <div class="col-6">     
           <div class="imgContainer">
-              <img class="shadowStyle imgStyle" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="Book image">        
+              <img class="shadowStyle imgStyle" [src]="book.volumeInfo?.imageLinks?.smallThumbnail" alt="Book image">        
           </div>             
           <div class="stars">
             <a *ngFor="let item of starList ">  
@@ -33,6 +33,12 @@
             </a> 
           </div>
       </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+          <button class="btn btn-primary" (click)="addFavorite()">
+            <i class="fa fa-heart"></i> Favorito</button>
+        </div>
     </div>
   </div>
 </section>
