@@ -21,24 +21,25 @@ export class BooksListService {
   constructor(private http: HttpClient, private alertService: MessagesService) { }
 
   searchBooks(text: string, startIndex?: number, maxResults?: number) {
-
-    let url = this.url + `volumes?q=${text}`;
-    if (startIndex) {
-      url += `&startIndex=${startIndex}`;  
-      if (maxResults) {
-        url += `&maxResults=${maxResults}`;
-      }
-    }
-  
-    this.http.get<BookList>(url)
-      .pipe(
-        catchError(this.handleError<BookList>('Get Books List', null))
-      )
-      .subscribe(
-        (books) => {
-          this.booksList.next(books);
+    if(text){
+      let url = this.url + `volumes?q=${text}`;
+      if (startIndex) {
+        url += `&startIndex=${startIndex}`;  
+        if (maxResults) {
+          url += `&maxResults=${maxResults}`;
         }
-      );
+      }
+    
+      this.http.get<BookList>(url)
+        .pipe(
+          catchError(this.handleError<BookList>('Get Books List', null))
+        )
+        .subscribe(
+          (books) => {
+            this.booksList.next(books);
+          }
+        );
+    }
   }
 
   getBook(id: string): Observable<any> {

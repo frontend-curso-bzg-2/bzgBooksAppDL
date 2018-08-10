@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { books } from '../../../data-books';
 import { BooksListService } from "../../services/list/books-list.service";
+import { BookList } from '../../models/books';
 
 @Component({
   selector: 'books-main',
@@ -9,20 +10,22 @@ import { BooksListService } from "../../services/list/books-list.service";
 })
 export class BooksMainComponent implements OnInit {
 
-  booksList: any[];
+  booksList: BookList;
   
   constructor(private booksService:BooksListService) { 
-    this.booksList = [];
+    this.booksService.searchBooks('Colombia');
   }
 
   ngOnInit() {
     //this.booksList = books.items;
-    this.booksService.getBookList().subscribe(
-      (books:any)=>{
-        if(books)
-          this.booksList = books
+    this.booksService.booksList
+    .subscribe(
+      books => {        
+        if(books){
+          this.booksList = books;
+        }        
       }
-    );
+);
   }
   
 }

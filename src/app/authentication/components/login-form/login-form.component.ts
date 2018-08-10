@@ -19,7 +19,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.login);
+    //console.log(this.login);
     this.submitted.emit(this.login);
   }
 

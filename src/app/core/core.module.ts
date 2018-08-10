@@ -11,7 +11,7 @@ import { NavSearchBooksComponent } from "./containers/nav-search-books/nav-searc
 import { NavLeftOptionsComponent } from "./containers/nav-left-options/nav-left-options.component";
 import { NavLeftTopComponent } from "./components/nav-left-top/nav-left-top.component";
 import { NavMenuLeftComponent } from './components/nav-menu-left/nav-menu-left.component';
-import { SearchFormComponent } from './component/search-form/search-form.component';
+import { SearchFormComponent } from './components/search-form/search-form.component';
 
 @NgModule({
   imports: [

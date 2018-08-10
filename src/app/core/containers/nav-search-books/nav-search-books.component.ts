@@ -21,10 +21,10 @@ export class NavSearchBooksComponent implements OnInit {
   closeAside(){
     this.state = (this.state === 'close') ? 'open' : 'close';
     this.actionAside.emit(this.state);
-    //console.log("emit...");
   }
 
   searchText(event:string){
+    //this.bookListService.searchBooks(event, 0, 20);
     this.bookListService.searchBooks(event);
   }
 }

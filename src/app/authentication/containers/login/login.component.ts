@@ -30,17 +30,6 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  loginFire(event:IAuth){
-    this.authFire.auth.signInWithEmailAndPassword(event.email, event.password).then(
-      auth => {
-        this.authService.login(this.authFire.auth.currentUser);
-      },
-      error => {
-        console.log(error.message);
-      }
-    );
-  }
-
   loginGoogle(event:boolean){
     if(event){
       this.authService.signInWithGoogle()
