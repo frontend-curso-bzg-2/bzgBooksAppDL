@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Store, select } from "@ngrx/store";
 import * as layout from "../../actions/layout";
 import * as fromRoot from "../../../reducer/reducer";
+import {User} from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'nav-search-books',
@@ -14,12 +16,19 @@ export class NavSearchBooksComponent implements OnInit {
 
   actionAside$:Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav));
   state : string = "open";
+  user: User;
 
-  constructor(private bookListService:BooksListService, private store: Store<fromRoot.State>) { 
+  constructor(private bookListService:BooksListService, private store: Store<fromRoot.State>, private authService:AngularFireAuth) { 
     this.state = 'open';
   }
 
   ngOnInit() {
+    this.authService.authState
+    .subscribe(
+      user => {        
+        this.user = user;        
+      }
+    );
   }
 
   closeAside(){

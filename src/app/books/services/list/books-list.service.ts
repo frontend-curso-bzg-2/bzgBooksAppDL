@@ -6,7 +6,7 @@ import { MessagesService } from '../../../alerts/services/messages.service';
 
 import { AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
-import * as firebase from "firebase/app";
+import * as firebase from "firebase";
 import { environment } from "../../../../environments/environment";
 import { BookList } from "../../models/books";
 
@@ -27,7 +27,7 @@ export class BooksListService {
       .subscribe(
         user => {
           this.user = user;
-          this.favsRef = rdb.list('favorites/' + this.user.uid);
+          this.favsRef = rdb.list('favorites/' + user.uid);
         }
       );
   }

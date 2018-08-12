@@ -47,9 +47,11 @@ import { reducers, metaReducer } from './reducer/reducer';
         maxAge: 30
       }
       
-    )
+    )    
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [    
+  ],
+  bootstrap: [
+    AppComponent]
 })
 export class AppModule { }

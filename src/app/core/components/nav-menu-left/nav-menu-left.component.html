@@ -19,10 +19,21 @@
         </a>
       </li>
       <li >
-          <a (click)="logout()" routerLink="/login">
+          <a class="" (click)="openModal($event, 'exit-modal')" href="">
             <i class="fa fa-power-off col-xs-6 col-sm-6 col-md-1 col-lg-1" title="Salir"></i>
-            <span class="col-xs-6 col-sm-6 col-md-1 col-lg-1">Salir</span>
+            <span class="col-xs-6 col-sm-6 col-md-1 col-lg-1">Salir</span>            
           </a>
       </li>            
     </ul>      
 </nav>
+<modal id="exit-modal">
+        <div class="modal">
+            <div class="modal-body">
+                <h3 class="title">Confirmación</h3>
+                <p>Desea salir?</p>
+                <button class="btn btn-primary btnPopup" (click)="closeModal('exit-modal', false);">No</button>
+                <button class="btn btn-primary btnPopup" (click)="closeModal('exit-modal', true);">Sí</button>
+            </div>      
+        </div>  
+        <div class="modal-background"></div>
+</modal>

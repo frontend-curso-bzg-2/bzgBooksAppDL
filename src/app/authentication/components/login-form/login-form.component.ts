@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IAuth, Auth } from "../../models/user";
+import { AuthTypes } from "../../models/authtypes";
 
 @Component({
   selector: 'login-form',
@@ -8,7 +9,7 @@ import { IAuth, Auth } from "../../models/user";
 })
 export class LoginFormComponent implements OnInit {
   @Output() submitted = new EventEmitter<IAuth>();
-  @Output() submittedGoogle = new EventEmitter<boolean>();
+  @Output() submittedAuthExternal = new EventEmitter<AuthTypes>();
   login:IAuth;
 
   constructor() {
@@ -19,12 +20,19 @@ export class LoginFormComponent implements OnInit {
   }
 
   submit(){
-    //console.log(this.login);
     this.submitted.emit(this.login);
   }
 
   loginGoogle(){
-    this.submittedGoogle.emit(true);
+    this.submittedAuthExternal.emit(AuthTypes.Google);
+  }
+
+  loginTwitter(){
+    this.submittedAuthExternal.emit(AuthTypes.Twitter);
+  }
+
+  loginFacebook(){
+    this.submittedAuthExternal.emit(AuthTypes.Facebook);
   }
 
 }

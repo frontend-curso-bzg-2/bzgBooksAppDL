@@ -13,14 +13,19 @@ import { NavLeftTopComponent } from "./components/nav-left-top/nav-left-top.comp
 import { NavMenuLeftComponent } from './components/nav-menu-left/nav-menu-left.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 
+import { ModalComponent } from '../modal/components/modal.component';
+//import { ModalService } from '../modal/services/modal.service';
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     AlertsModule,
-    AuthenticationModule
+    AuthenticationModule    
   ],
-  declarations: [CoreComponent, MainContentComponent, NavSearchBooksComponent, NavLeftOptionsComponent,NavLeftTopComponent, NavMenuLeftComponent, SearchFormComponent
+  declarations: [CoreComponent, MainContentComponent, NavSearchBooksComponent, 
+    NavLeftOptionsComponent,NavLeftTopComponent, NavMenuLeftComponent, SearchFormComponent, 
+    ModalComponent
   ],
   exports: [CoreComponent]
 })
