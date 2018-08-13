@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from "@ngrx/store";
 import { AuthService } from "../../../authentication/services/auth/auth.service";
 import { ModalService } from '../../../modal/services';
+import * as fromAuth from "../../../authentication/reducers/auth";
+import * as Auth from "../../../authentication/actions/auth";
 
 @Component({
   selector: 'nav-menu-left',
@@ -9,7 +12,7 @@ import { ModalService } from '../../../modal/services';
 })
 export class NavMenuLeftComponent implements OnInit {
 
-  constructor(private authService: AuthService, private modalService: ModalService) {
+  constructor(private authService: AuthService, private modalService: ModalService, private store: Store<fromAuth.State>) {
 
   }
 
@@ -17,6 +20,7 @@ export class NavMenuLeftComponent implements OnInit {
   }
 
   logout() {
+    this.store.dispatch(new Auth.Logout);
     this.authService.logout();
   }
 

@@ -1,6 +1,6 @@
 <div class="row background-top">
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-2 containerImage">
-    <img [src]="user?.photoURL" class="bigicon userImage" [ngClass]="(user?.photoURL)? '': 'noPicture'">
+    <img [src]="user?.photoURL || 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'" class="bigicon userImage" [ngClass]="(user?.photoURL)? '': 'noPicture'">
     <i class="fa fa-user-circle bigicon userImage" aria-hidden="true" [ngClass]="(user?.photoURL)? 'noPicture': ''"></i>      
   </div>
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-7 userData">

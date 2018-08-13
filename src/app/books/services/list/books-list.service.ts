@@ -24,10 +24,12 @@ export class BooksListService {
     rdb: AngularFireDatabase) { 
     this.booksList.next({ kind: "", totalItems: 0, items: [] });
     authFire.authState
-      .subscribe(
+      .subscribe(        
         user => {
-          this.user = user;
-          this.favsRef = rdb.list('favorites/' + user.uid);
+          if(user){
+            this.user = user;
+            this.favsRef = rdb.list('favorites/' + user.uid);
+          }
         }
       );
   }
