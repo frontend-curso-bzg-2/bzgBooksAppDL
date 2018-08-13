@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { AuthTypes } from '../../models/authtypes';
 
 import * as Auth from "../../actions/auth";
-import * as fromAuth from "../../reducers/auth";
+import * as fromAuth from "../../reducers";
 import { MessagesService } from "../../../alerts/services/messages.service";
 
 
@@ -18,7 +18,7 @@ import { MessagesService } from "../../../alerts/services/messages.service";
 })
 export class LoginComponent implements OnInit {
 
-  pending$ = this.store.pipe(select(fromAuth.getPending));
+  pending$ = this.store.pipe(select(fromAuth.getPendding));
   error$ = this.store.pipe(select(fromAuth.getError));
   success$ = this.store.pipe(select(fromAuth.getLoggedIn));
 
