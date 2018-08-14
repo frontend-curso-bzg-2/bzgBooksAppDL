@@ -12,7 +12,8 @@ import * as Auth from "../../../authentication/actions/auth";
 })
 export class NavMenuLeftComponent implements OnInit {
 
-  constructor(private authService: AuthService, private modalService: ModalService, private store: Store<fromAuth.State>) {
+  constructor(private authService: AuthService, private modalService: ModalService,
+     private store: Store<fromAuth.State>) {
 
   }
 
@@ -26,7 +27,7 @@ export class NavMenuLeftComponent implements OnInit {
 
   openModal(event: any, id: string) {
     event.preventDefault();
-    this.modalService.open(id);
+    this.modalService.open(id, true);
   }
 
   closeModal(id: string, selection: boolean) {

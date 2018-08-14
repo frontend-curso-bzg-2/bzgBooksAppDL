@@ -13,11 +13,8 @@ a
         margin-left 5px
 
 modal
-    display none
-    width 100%
-    height 100%      
+    display none    
     margin 0px
-
     
 .modal 
     position fixed
@@ -25,7 +22,7 @@ modal
     right 0
     bottom 0
     left 0
-    z-index 1000
+    z-index 1200
     overflow auto
     display inline-table    
     width: 450px
@@ -47,14 +44,15 @@ modal
     left 0
     background-color #000
     opacity 0.75
-    z-index 900
-
-body
-    &.modal-open
-        overflow hidden
+    z-index 1100
 
 .btnPopup
     margin 10px
+    background-color #684e05
+    border-color #684e05
+    &:hover
+        background-color #d9080099
+        border-color #d9080099
 
 .title
     background-color #e9ecef

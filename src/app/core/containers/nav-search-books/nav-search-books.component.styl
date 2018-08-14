@@ -8,7 +8,11 @@ a
 .containerImage
 	width: 50px;
 	height: 50px;
-	margin: 15px 15px 15px 15px;
+	margin: 15px 15px 15px 15px;	
+
+.userLink
+	&:hover
+		background-color #f8090999
 
 .userImage 
 	width: 50px;
@@ -18,7 +22,31 @@ a
 	font-size: 48px;	
 	display: flex;	
 	justify-content: center;
+	box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);	
+
+.containerImageModal
+	width: 70px;
+	height: 70px;
+	margin: 0px 15px 15px 0px;
+
+.userImageModal
+	width: 70px;
+	height: 70px;
+	border: 1px solid;
+	border-radius: 10px 10px 10px 10px;
+	font-size: 48px;	
+	display: flex;	
+	justify-content: center;
 	box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+
+.userNameModal
+	font-size 22px
+	font-family initial
+	font-weight bold
+
+.extra-info-col
+	margin-top 10px
+	font-style italic
 
 .noPicture
 	display none
@@ -42,3 +70,41 @@ a
 	&:hover
 		background-color #f8090999
 		border-radius 10px 10px 10px 10px
+
+.extra-info
+	border-top 1px solid
+
+modal
+    display none  
+    margin 0px
+
+.modal 
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 0
+    z-index 1000
+    overflow auto
+    display inline-table        
+    margin: auto 0px auto auto
+    text-align center
+	width 450px
+    height 350px
+
+.modal-body 
+    padding 20px
+    margin 40px
+    background-color #fdd67f99
+    border-radius 10px 10px 10px 10px
+    box-shadow 5px 5px 5px 5px rgba(0,0,0,0.75)	
+
+.modal-background
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 0
+    background-color #000
+    opacity 0.75
+    z-index 900

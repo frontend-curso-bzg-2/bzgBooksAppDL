@@ -1,23 +1,63 @@
 <header>
   <div class="row bgImage">
-    <div class="col-xs-4 col-sm-5 col-md-3 col-lg-3 leftHeader float-left">      
+    <div class="col-xs-4 col-sm-5 col-md-3 col-lg-3 leftHeader float-left">
       <a id="menuContext" (click)="closeAside()" class="toggleClass">
         <i class="fa fa-bars"></i>
       </a>
-      <span class="dropbtn">My Books App</span>      
-    </div>    
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 rightHeader">        
-        <div class="row float-right">
-          <div class="col-11">
-              <search-form (searchText)="searchText($event)"></search-form>
-          </div>
-          <div class="col-1">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-2 containerImage">
-                    <img [src]="user?.photoURL" class="bigicon userImage" [ngClass]="(user?.photoURL)? '': 'noPicture'">
-                    <i class="fa fa-user-circle bigicon userImage" aria-hidden="true" [ngClass]="(user?.photoURL)? 'noPicture': ''"></i>      
-                  </div>
-            </div>
+      <span class="dropbtn">My Books App</span>
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 rightHeader">
+      <div class="row">
+        <div class="col-xs-1 col-sm-1 col-md-3 col-lg-6">          
         </div>
+        <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
+          <search-form (searchText)="searchText($event)"></search-form>
+        </div>
+        <div class="col-1">
+          <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 containerImage">
+            <a class="userLink" (click)="openModal($event, 'user-data-modal')" href="">
+              <img [src]="user?.photoURL" class="bigicon userImage" [ngClass]="(user?.photoURL)? '': 'noPicture'">
+              <i class="fa fa-user-circle bigicon userImage" aria-hidden="true" [ngClass]="(user?.photoURL)? 'noPicture': ''"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <modal id="user-data-modal">
+    <div class="modal">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-10">
+            <p></p>
+          </div>
+          <div class="col-2">
+            <button aria-label="Close" class="close" data-dismiss="alert" type="button" (click)="closeModal('user-data-modal');">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3 containerImageModal">
+            <img [src]="user?.photoURL" class="bigicon userImageModal" [ngClass]="(user?.photoURL)? '': 'noPicture'">
+            <i class="fa fa-user-circle bigicon userImageModal" aria-hidden="true" [ngClass]="(user?.photoURL)? 'noPicture': ''"></i>
+          </div>
+          <div class="col-6">
+            <p class="userNameModal">{{user?.displayName}}</p>
+          </div>
+        </div>
+        <div class="row extra-info">
+          <div class="col-4 extra-info-col">
+            <p class="">Books</p>
+          </div>
+          <div class="col-4 extra-info-col">
+            <p class="">Followers</p>
+          </div>
+          <div class="col-4 extra-info-col">
+            <p class="">Favorites</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </modal>
 </header>

@@ -17,12 +17,14 @@ export class BooksListService {
 
   url = environment.apiBooks;
   booksList: Subject<BookList> = new Subject();
+  recommendedBooksList: Subject<BookList> = new Subject();
   favsRef: AngularFireList<any>;
   user: firebase.User;
 
   constructor(private http: HttpClient, private alertService: MessagesService, private authFire: AngularFireAuth,
     rdb: AngularFireDatabase) { 
     this.booksList.next({ kind: "", totalItems: 0, items: [] });
+    this.recommendedBooksList.next({ kind: "", totalItems: 0, items: [] });
     authFire.authState
       .subscribe(        
         user => {
@@ -34,16 +36,23 @@ export class BooksListService {
       );
   }
 
+  searchRecommendedBooks(text: string, startIndex?: number, maxResults?: number) {
+    let url = this.buildSearchUrlWithParams(text, startIndex, maxResults);
+    console.log(url);  
+    this.http.get<BookList>(url)
+        .pipe(
+          catchError(this.handleError<BookList>('Get Recommended Books List', null))
+        )
+        .subscribe(
+          (books) => {
+            this.recommendedBooksList.next(books);
+          }
+        );
+  }
+
   searchBooks(text: string, startIndex?: number, maxResults?: number) {
     if(text){
-      let url = this.url + `volumes?q=${text}`;
-      if (startIndex) {
-        url += `&startIndex=${startIndex}`;  
-        if (maxResults) {
-          url += `&maxResults=${maxResults}`;
-        }
-      }
-    
+      let url = this.buildSearchUrlWithParams(text, startIndex, maxResults);    
       this.http.get<BookList>(url)
         .pipe(
           catchError(this.handleError<BookList>('Get Books List', null))
@@ -54,6 +63,17 @@ export class BooksListService {
           }
         );
     }
+  }
+
+  private buildSearchUrlWithParams(text: string, startIndex: number, maxResults: number) {
+    let url = this.url + `volumes?q=${text}`;
+    if (startIndex) {
+      url += `&startIndex=${startIndex}`;
+      if (maxResults) {
+        url += `&maxResults=${maxResults}`;
+      }
+    }
+    return url;
   }
 
   getBook(id: string): Observable<any> {

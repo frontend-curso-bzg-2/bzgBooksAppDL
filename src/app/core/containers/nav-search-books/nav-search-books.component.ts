@@ -6,6 +6,7 @@ import * as layout from "../../actions/layout";
 import * as fromRoot from "../../../reducer/reducer";
 import {User} from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ModalService } from '../../../modal/services';
 
 @Component({
   selector: 'nav-search-books',
@@ -18,7 +19,8 @@ export class NavSearchBooksComponent implements OnInit {
   state : string = "open";
   user: User;
 
-  constructor(private bookListService:BooksListService, private store: Store<fromRoot.State>, private authService:AngularFireAuth) { 
+  constructor(private bookListService:BooksListService, private store: Store<fromRoot.State>,
+     private authService:AngularFireAuth,private modalService: ModalService) { 
     this.state = 'open';
   }
 
@@ -26,7 +28,7 @@ export class NavSearchBooksComponent implements OnInit {
     this.authService.authState
     .subscribe(
       user => {        
-        this.user = user;        
+        this.user = user;     
       }
     );
   }
@@ -41,5 +43,14 @@ export class NavSearchBooksComponent implements OnInit {
 
   searchText(event:string){
     this.bookListService.searchBooks(event, 0, 20);    
+  }
+
+  openModal(event: any, id: string) {
+    event.preventDefault();
+    this.modalService.open(id, false);
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);    
   }
 }

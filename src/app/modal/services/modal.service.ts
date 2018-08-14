@@ -18,10 +18,10 @@ export class ModalService {
     this.modals = this.modals.filter(x => x.id !== id);
   }
 
-  open(id: string) {
+  open(id: string, overflowHide: boolean) {
     // open modal specified by id
     let modal: any = this.modals.filter(x => x.id === id)[0];
-    modal.open();
+    modal.open(overflowHide);
   }
 
   close(id: string) {

@@ -5,7 +5,6 @@ import { ModalService } from '../services';
 
 @Component({
   selector: 'modal',
-  //templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.styl'],
   template: '<ng-content></ng-content>'
 })
@@ -47,9 +46,10 @@ export class ModalComponent implements OnInit {
   }
 
   // open modal
-  open(): void {
+  open(overflowHide: boolean): void {
     this.element.style.display = 'block';    
-    document.body.classList.add('modal-open');
+    if(overflowHide)
+      document.body.classList.add('modal-open');
   }
 
   // close modal

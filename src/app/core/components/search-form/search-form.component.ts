@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'search-form',
@@ -9,13 +10,14 @@ export class SearchFormComponent implements OnInit {
 
   @Output() searchText = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  searchBooks(text : string) {
+  searchBooks(event:any, text : string) {    
     this.searchText.emit(text);
+    this.router.navigate(['main/books']);
   }
 
 }

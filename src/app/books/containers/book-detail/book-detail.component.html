@@ -25,7 +25,7 @@
       </div>
       <div class="col-6">   
           <div class="buttons">
-              <button class="btn btn-primary" (click)="addFavorite()" title="Agregar a Favoritos">
+              <button class="btn btn-primary btnSite" (click)="addFavorite()" title="Agregar a Favoritos">
                 <i class="fa fa-heart"></i>
               </button>
           </div>  
@@ -38,6 +38,26 @@
             </a> 
           </div>
       </div>
+    </div>
+    <div class="Row">
+        <div class="col-12 border-top recommendedTitle">
+          <h4 class="">Libros Similares</h4>
+        </div>
+        <div class="card-deck">
+          <div *ngFor="let recommendedBook of recommendedList?.items">
+              <div class="card mb-4 shadowStyle cardStyle">
+                <div class="view overlay">
+                  <img class="card-img-top imgCard" [src]="recommendedBook.volumeInfo.imageLinks?.smallThumbnail" alt="Book image">            
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">{{recommendedBook.volumeInfo?.title}}</h4>                
+                </div>
+              <div class="card-footer">
+                  <a [routerLink]="['../', recommendedBook.id]" class="btn btn-primary btnSite">Ver Detalle</a>                         
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </section>
