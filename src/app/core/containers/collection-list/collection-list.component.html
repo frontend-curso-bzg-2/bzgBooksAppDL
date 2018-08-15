@@ -6,8 +6,8 @@
   <a class="fa fa-plus" aria-hidden="true" (click)="openModal($event, 'collection-add-modal')"></a>
   <ul class="list-unstyled nav-left">
     <div *ngFor="let collection of collectionList | async">
-      <li>
-        <a routerLink="/main/collections/{{collection.name}}">{{collection.name}}</a>
+      <li class="itemCollection">
+        <a routerLink="/main/collections/{{collection.name}}"><span>{{collection.name}}</span></a>
         <a class="fa fa-times" aria-hidden="true" title="Eliminar" (click)="removeCollection(collection)"></a>
       </li>
     </div>
