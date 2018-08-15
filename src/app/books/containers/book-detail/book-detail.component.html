@@ -25,8 +25,11 @@
       </div>
       <div class="col-6">   
           <div class="buttons">
-              <button class="btn btn-primary btnSite" (click)="addFavorite()" title="Agregar a Favoritos">
+              <button [hidden]="isFavorite" class="btn btn-primary btnSite" (click)="addFavorite()" title="Agregar a Favoritos">
                 <i class="fa fa-heart"></i>
+              </button>
+              <button [hidden]="!isFavorite" class="btn btn-primary btnSite" (click)="removeFavorite(favoriteKey)" title="Remover de Favoritos">
+                <i class="fa fa-times"></i>
               </button>
           </div>  
           <div class="imgContainer">

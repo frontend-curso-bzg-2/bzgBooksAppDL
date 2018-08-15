@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 //import { books } from '../../../data-books';
 import { BooksListService } from '../../services/list/books-list.service';
 import { BookList } from '../../models/books';
+import { Favorite } from '../../models/favorite';
 
 @Component({
   selector: 'book-detail',
@@ -14,13 +15,15 @@ export class BookDetailComponent implements OnInit {
   starList:boolean[];
   book: any;
   recommendedList: BookList;
+  isFavorite : boolean;
+  favoriteKey: string;
 
   constructor(private router: ActivatedRoute, private bookService: BooksListService) {
     this.book={};    
    }
 
   ngOnInit() {
-    let id:string; 
+    let id:string;     
     this.starList = [false,false,false,false,false];   
     //id = this.router.snapshot.paramMap.get('id');
     this.router.params.subscribe( (params: Params) => { 
@@ -32,12 +35,28 @@ export class BookDetailComponent implements OnInit {
             let rating=this.book.volumeInfo.averageRating;
             this.buildBookStarsRating(rating); 
             let industryId = this.book.volumeInfo.industryIdentifiers;
-            this.buildRecommendedBooksList(industryId);            
+            this.buildRecommendedBooksList(industryId);   
+            this.askIsFavorite(this.book.id);         
             }
           }
         );
       });   
     //this.book = books.items.find( item => {return item.id = id});
+  }
+
+  private askIsFavorite(id:any) {
+    this.bookService.getFavorites().subscribe(favorites => {
+      if (favorites) {
+        this.isFavorite = false;
+        favorites.forEach(favoriteBook => {
+          if (favoriteBook.book.id === id){
+            this.isFavorite = true;
+            this.favoriteKey = favoriteBook.key;
+          }
+            
+        });
+      }
+    });
   }
 
   private buildRecommendedBooksList(industryId: any) {
@@ -62,6 +81,13 @@ export class BookDetailComponent implements OnInit {
 
   addFavorite() {
     this.bookService.addFavorites(this.book);
+  }
+
+  removeFavorite(favoriteKey:string){
+    let favorite = new Favorite();
+    favorite.key=favoriteKey;
+    favorite.book=this.book;
+    this.bookService.deleteFavorites(favorite);
   }
 
 }

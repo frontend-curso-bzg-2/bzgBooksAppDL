@@ -1,5 +1,5 @@
 import { AuthActions, AuthActionTypes } from "../actions/auth";
-
+    
 export interface State {
     loggedIn: boolean;
     user_id: string | null;
