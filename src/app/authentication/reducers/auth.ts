@@ -1,5 +1,4 @@
 import { AuthActions, AuthActionTypes } from "../actions/auth";
-import * as firebase from "firebase/app";
 
 export interface State {
     loggedIn: boolean;
