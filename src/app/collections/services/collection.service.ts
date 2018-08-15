@@ -10,12 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class CollectionService {
   
-  collectionsRef: AngularFireList<Collection>;
-  user: firebase.User;
+  //collectionsRef: AngularFireList<Collection>;
+  //user: firebase.User;
 
   constructor(private authFire: AngularFireAuth, private rdb: AngularFireDatabase, 
     private alertService: MessagesService) {
-    authFire.authState
+    /*authFire.authState
       .subscribe(        
         user => {
           if(user){
@@ -23,26 +23,27 @@ export class CollectionService {
             this.collectionsRef = rdb.list('collections/' + user.uid);
           }
         }
-      );
+      );*/
    }
 
-  addCollections(collection: Collection) {
-    let key = this.rdb.database.ref().child('collections/' + this.user.uid).push().key;
+  addCollections(userUID:string, collection: Collection) {
+    let key = this.rdb.database.ref().child('collections/' + userUID).push().key;
     collection.key=key;
     var updates = {};
-    updates['/collections/' + this.user.uid+'/' + key] = collection;
+    updates['/collections/' + userUID+'/' + key] = collection;
     return this.rdb.database.ref().update(updates).then(_ => this.alertService.message("Agregado a Colleciones", "success"));
   }
 
-  removeCollection(collection: any){
+  removeCollection(userUID:string, collection: any){
     var updates = {};
-    updates['/collections/' + this.user.uid+'/' + collection.key] = collection;
-    this.rdb.database.ref('/collections/' + this.user.uid+'/' + collection.key).remove().then(_ => this.alertService.message("Se ha removido la Collecion", "success") );
+    updates['/collections/' + userUID+'/' + collection.key] = collection;
+    this.rdb.database.ref('/collections/' + userUID+'/' + collection.key).remove().then(_ => this.alertService.message("Se ha removido la Collecion", "success") );
   }
 
-  getList() : Observable<Collection[]>{
-    if(this.collectionsRef)
-      return this.collectionsRef.valueChanges();
+  getList(userUID:string) : Observable<Collection[]>{
+    let collectionsRef: AngularFireList<Collection> = this.rdb.list('collections/' + userUID);
+    if(collectionsRef)
+      return collectionsRef.valueChanges();
     return new Observable<Collection[]>();
   }
 }

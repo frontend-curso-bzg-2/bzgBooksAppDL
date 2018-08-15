@@ -6,6 +6,7 @@ import { routes } from "./routes.books";
 import { BooksMainComponent } from "./containers/books-main/books-main.component";
 import { BookDetailComponent } from "./containers/book-detail/book-detail.component";
 import { DragAndDropModule } from 'angular-draggable-droppable';
+import { CollectionOptionsComponent } from './components/collection-options/collection-options.component';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { DragAndDropModule } from 'angular-draggable-droppable';
     RouterModule.forChild(routes),
     DragAndDropModule
   ],
-  declarations: [BooksMainComponent, BookDetailComponent],
+  declarations: [BooksMainComponent, BookDetailComponent, CollectionOptionsComponent],
   exports: [BooksMainComponent]
 })
 export class BooksModule { }

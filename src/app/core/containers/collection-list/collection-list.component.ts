@@ -3,6 +3,8 @@ import { Collection, ICollection } from "../../../collections/models/collections
 import { Observable } from 'rxjs';
 import { CollectionService } from '../../../collections/services/collection.service';
 import { ModalService } from '../../../modal/services';
+import { Store, select } from '@ngrx/store';
+import * as fromAuth from "../../../authentication/reducers/";
 
 @Component({
   selector: 'collection-list',
@@ -13,8 +15,10 @@ export class CollectionListComponent implements OnInit {
 
   collection : ICollection;
   collectionList: Observable<Collection[]>;
+  user$:Observable<string> = this.store.pipe(select(fromAuth.getUser));
 
-  constructor(private collectionService: CollectionService, private modalService: ModalService) {
+  constructor(private collectionService: CollectionService, private modalService: ModalService, 
+    private store: Store<fromAuth.State>) {
     this.initializeCollection();
    }
 
@@ -23,7 +27,10 @@ export class CollectionListComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.collectionList = this.collectionService.getList();
+    this.user$.subscribe(user => {
+      this.collectionList = this.collectionService.getList(user);
+    });
+    
   }
 
   openModal(event: any, id: string) {
@@ -37,12 +44,18 @@ export class CollectionListComponent implements OnInit {
 
   agregarCollection(id: string) {
     this.modalService.close(id);
-    this.collectionService.addCollections(this.collection);
+    this.user$.subscribe(user => {
+      this.collectionService.addCollections(user, this.collection);
+    });
+    
     this.initializeCollection();
   }
 
   removeCollection(collection:Collection){
-    this.collectionService.removeCollection(collection);
+    this.user$.subscribe(user => {
+      this.collectionService.removeCollection(user, collection);
+    });
+    
   }
   
 }
