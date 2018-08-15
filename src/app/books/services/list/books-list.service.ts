@@ -84,13 +84,11 @@ export class BooksListService {
   }
     
   addFavorites(book: any) {
-    this.favsRef.push(book).then(_ => );
-
     let key = this.rdb.database.ref().child('favorites/' + this.user.uid).push();
     //book.key=key;
     
     //var updates = {};
-    //updates['/collections/' + this.user.uid+'/' + key] = book;
+    //updates['favorites/' + this.user.uid+'/' + key] = book;
     //return this.rdb.database.ref().update(updates).then(_ => this.alertService.message("Agregado a Favoritos", "success"));
   }
 
@@ -100,8 +98,8 @@ export class BooksListService {
 
   deleteFavorites(book:any){
     //var updates = {};
-    //updates['/collections/' + this.user.uid+'/' + book.key] = book;
-    //this.rdb.database.ref('/collections/' + this.user.uid+'/' + book.key).remove().then(_ =>  this.alertService.message("Eliminado de Favoritos", "success") );
+    //updates['favorites/' + this.user.uid+'/' + book.key] = book;
+    //this.rdb.database.ref('favorites/' + this.user.uid+'/' + book.key).remove().then(_ =>  this.alertService.message("Eliminado de Favoritos", "success") );
   }
 
   private handleError<T>(operation="operation", result?: T){
