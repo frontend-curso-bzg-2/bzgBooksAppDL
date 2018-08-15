@@ -9,6 +9,7 @@ import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import * as firebase from "firebase";
 import { environment } from "../../../../environments/environment";
 import { BookList } from "../../models/books";
+import { Favorite } from '../../models/favorite';
 
 @Injectable({
   providedIn: 'root'
@@ -83,23 +84,24 @@ export class BooksListService {
       );
   }
     
-  addFavorites(book: any) {
-    let key = this.rdb.database.ref().child('favorites/' + this.user.uid).push();
-    //book.key=key;
-    
-    //var updates = {};
-    //updates['favorites/' + this.user.uid+'/' + key] = book;
-    //return this.rdb.database.ref().update(updates).then(_ => this.alertService.message("Agregado a Favoritos", "success"));
+  addFavorites(favoriteBook: any) {
+    let createdKey = this.rdb.database.ref().child('favorites/' + this.user.uid).push().key;
+    let favorite = new Favorite();
+    favorite.key=createdKey;
+    favorite.book=favoriteBook;
+    var updates = {};
+    updates['favorites/' + this.user.uid+'/' + createdKey] = favorite;
+    return this.rdb.database.ref().update(updates).then(_ => this.alertService.message("Agregado a Favoritos", "success"));
   }
 
   getFavorites() : Observable<any>{
     return this.favsRef.valueChanges();
   }
 
-  deleteFavorites(book:any){
-    //var updates = {};
-    //updates['favorites/' + this.user.uid+'/' + book.key] = book;
-    //this.rdb.database.ref('favorites/' + this.user.uid+'/' + book.key).remove().then(_ =>  this.alertService.message("Eliminado de Favoritos", "success") );
+  deleteFavorites(favorite:any){
+    var updates = {};
+    updates['favorites/' + this.user.uid+'/' + favorite.key] = favorite;
+    this.rdb.database.ref('favorites/' + this.user.uid+'/' + favorite.key).remove().then(_ =>  this.alertService.message("Eliminado de Favoritos", "success") );
   }
 
   private handleError<T>(operation="operation", result?: T){

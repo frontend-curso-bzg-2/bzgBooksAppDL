@@ -17,16 +17,16 @@ export class MainItemFavoritesComponent implements OnInit {
 
   ngOnInit() {
     this.booksService.getFavorites().subscribe(
-          books => {        
-            if(books){
-              this.favoritesList = books;
+          favorites => {        
+            if(favorites){
+              this.favoritesList = favorites;
             }        
           }
     );
   } 
 
-  removeFavorite(book:any){
-    this.booksService.deleteFavorites(book);
+  removeFavorite(favorite:any){
+    this.booksService.deleteFavorites(favorite);
   }
 
 }

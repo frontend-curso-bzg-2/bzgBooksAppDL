@@ -28,7 +28,7 @@
               <button [hidden]="isFavorite" class="btn btn-primary btnSite" (click)="addFavorite()" title="Agregar a Favoritos">
                 <i class="fa fa-heart"></i>
               </button>
-              <button [hidden]="!isFavorite" class="btn btn-primary btnSite" (click)="removeFavorite()" title="Remover de Favoritos">
+              <button [hidden]="!isFavorite" class="btn btn-primary btnSite" (click)="removeFavorite(favoriteKey)" title="Remover de Favoritos">
                 <i class="fa fa-times"></i>
               </button>
           </div>  

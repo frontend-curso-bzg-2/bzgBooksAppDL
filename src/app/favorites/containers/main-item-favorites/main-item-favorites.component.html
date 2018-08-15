@@ -10,22 +10,22 @@
   
   <section id="canvas">
     <div class="card-deck">
-      <div *ngFor="let book of favoritesList">
+      <div *ngFor="let favorite of favoritesList">
           <div class="buttons">
-              <button class="btn btn-primary btnSite" (click)="removeFavorite(book)" title="Remover de Favoritos">
+              <button class="btn btn-primary btnSite" (click)="removeFavorite(favorite)" title="Remover de Favoritos">
                   <i class="fa fa-times"></i>
               </button>
           </div>
           <div class="card mb-4 shadowStyle cardStyle">            
             <div class="view overlay">
-              <img class="card-img-top imgCard" [src]="book.volumeInfo.imageLinks?.smallThumbnail" alt="Book image">            
+              <img class="card-img-top imgCard" [src]="favorite.book.volumeInfo.imageLinks?.smallThumbnail" alt="Book image">            
             </div>
             <div class="card-body">
-              <h4 class="card-title">{{book.volumeInfo?.title}}</h4>
-              <p class="card-text cardTextStyle">{{book.volumeInfo?.subtitle}}</p>                        
+              <h4 class="card-title">{{favorite.book.volumeInfo?.title}}</h4>
+              <p class="card-text cardTextStyle">{{favorite.book.volumeInfo?.subtitle}}</p>                        
             </div>
           <div class="card-footer">
-              <a [routerLink]="['../../books/detail', book.id]" class="btn btn-primary btnSite">Ver Detalle</a>                                       
+              <a [routerLink]="['../../books/detail', favorite.book.id]" class="btn btn-primary btnSite">Ver Detalle</a>                                       
             </div>
         </div>
       </div>

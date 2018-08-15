@@ -1,6 +1,6 @@
 import * as fromRoot from "../../reducer/reducer";
 import * as fromCollection from "./CollectionReduce";
-import { createFeatureSelector, createSelector } from "../../../../node_modules/@ngrx/store";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 export interface State extends fromRoot.State{
     coll: fromCollection.State;
