@@ -14,13 +14,14 @@ export class BookDetailComponent implements OnInit {
   starList:boolean[];
   book: any;
   recommendedList: BookList;
+  isFavorite : boolean;
 
   constructor(private router: ActivatedRoute, private bookService: BooksListService) {
     this.book={};    
    }
 
   ngOnInit() {
-    let id:string; 
+    let id:string;     
     this.starList = [false,false,false,false,false];   
     //id = this.router.snapshot.paramMap.get('id');
     this.router.params.subscribe( (params: Params) => { 
@@ -32,12 +33,25 @@ export class BookDetailComponent implements OnInit {
             let rating=this.book.volumeInfo.averageRating;
             this.buildBookStarsRating(rating); 
             let industryId = this.book.volumeInfo.industryIdentifiers;
-            this.buildRecommendedBooksList(industryId);            
+            this.buildRecommendedBooksList(industryId);   
+            this.askIsFavorite(this.book.id);         
             }
           }
         );
       });   
     //this.book = books.items.find( item => {return item.id = id});
+  }
+
+  private askIsFavorite(id:any) {
+    this.bookService.getFavorites().subscribe(books => {
+      if (books) {
+        this.isFavorite = false;
+        books.forEach(favoriteBook => {
+          if (favoriteBook.id === id)
+            this.isFavorite = true;
+        });
+      }
+    });
   }
 
   private buildRecommendedBooksList(industryId: any) {
@@ -62,6 +76,10 @@ export class BookDetailComponent implements OnInit {
 
   addFavorite() {
     this.bookService.addFavorites(this.book);
+  }
+
+  removeFavorite(){
+    this.bookService.deleteFavorites(this.book);
   }
 
 }
