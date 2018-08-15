@@ -5,6 +5,7 @@ import { Observable, of } from "rxjs";
 import { AuthService } from "../auth/auth.service";
 import * as fromAuth from "../../reducers";
 import { Store, select } from '@ngrx/store';
+import * as Auth from "../../actions/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,15 @@ export class AuthGuardService implements CanActivate {
       }
       return true;
     }), take(1));
-    
   }
+/*
+  checkLocalStorage(){
+    let user = JSON.parse(localStorage.getItem('bzbooksappdl'));
+    if(user){
+      this.store.dispatch(new Auth.LoginSuccess(user.uid));
+      return true;
+    }
+    return false;   
+  }*/
 
 }

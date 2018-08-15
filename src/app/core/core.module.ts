@@ -12,8 +12,9 @@ import { NavLeftOptionsComponent } from "./containers/nav-left-options/nav-left-
 import { NavLeftTopComponent } from "./components/nav-left-top/nav-left-top.component";
 import { NavMenuLeftComponent } from './components/nav-menu-left/nav-menu-left.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
-
+import { FormsModule } from "@angular/forms";
 import { ModalComponent } from '../modal/components/modal.component';
+import { CollectionListComponent } from './containers/collection-list/collection-list.component';
 //import { ModalService } from '../modal/services/modal.service';
 
 @NgModule({
@@ -21,11 +22,12 @@ import { ModalComponent } from '../modal/components/modal.component';
     CommonModule,
     RouterModule.forChild(routes),
     AlertsModule,
-    AuthenticationModule    
+    AuthenticationModule,
+    FormsModule
   ],
   declarations: [CoreComponent, MainContentComponent, NavSearchBooksComponent, 
     NavLeftOptionsComponent,NavLeftTopComponent, NavMenuLeftComponent, SearchFormComponent, 
-    ModalComponent
+    ModalComponent, CollectionListComponent
   ],
   exports: [CoreComponent]
 })
