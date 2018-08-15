@@ -15,7 +15,7 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import { FormsModule } from "@angular/forms";
 import { ModalComponent } from '../modal/components/modal.component';
 import { CollectionListComponent } from './containers/collection-list/collection-list.component';
-//import { ModalService } from '../modal/services/modal.service';
+import { DragAndDropModule } from 'angular-draggable-droppable';
 
 @NgModule({
   imports: [
@@ -23,7 +23,8 @@ import { CollectionListComponent } from './containers/collection-list/collection
     RouterModule.forChild(routes),
     AlertsModule,
     AuthenticationModule,
-    FormsModule
+    FormsModule,
+    DragAndDropModule
   ],
   declarations: [CoreComponent, MainContentComponent, NavSearchBooksComponent, 
     NavLeftOptionsComponent,NavLeftTopComponent, NavMenuLeftComponent, SearchFormComponent, 
