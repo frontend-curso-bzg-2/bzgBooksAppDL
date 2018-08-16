@@ -4,6 +4,8 @@ export interface User {
     userName?: string;
     email?: string;
     urlImage?: string; 
+    photoURL?: string;
+    displayName?: string;
 }
 
 export interface IAuth{
