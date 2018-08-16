@@ -18,7 +18,8 @@ export class NavSearchBooksComponent implements OnInit {
 
   actionAside$:Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav));
   state : string = "open";
-  user$:Observable<string> = this.store.pipe(select(fromAuth.getUser));
+  user : User;
+  observableUser$ : Observable<string> = this.store.pipe(select(fromAuth.getUser));
   numFavorites: any;
 
   constructor(private bookListService:BooksListService, private store: Store<fromRoot.State>,
@@ -27,7 +28,13 @@ export class NavSearchBooksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user$.subscribe(user => {
+    this.authService.authState
+    .subscribe(
+      user => {        
+        this.user = user;     
+      }
+    );
+    this.observableUser$.subscribe(user => {
       this.bookListService.getFavorites(user).subscribe(
         (favorites)=>{
           this.numFavorites=favorites.length;
