@@ -1,3 +1,10 @@
+a
+    outline none
+    text-decoration none
+    color black
+    &:active
+        color red
+        
 modal
     display none    
     margin 0px
@@ -32,14 +39,6 @@ modal
     opacity 0.75
     z-index 1100
 
-.btnPopup
-    margin 10px
-    background-color #684e05
-    border-color #684e05
-    &:hover
-        background-color #d9080099
-        border-color #d9080099
-
 .title
     background-color #e9ecef
 
@@ -48,3 +47,25 @@ modal
 
 .drag-active 
     z-index: 3
+
+:host-context(.aside-close)
+    span
+        display none
+
+.btnPopup
+    margin 10px
+    background-color #684e05
+    border-color #684e05
+    &:hover
+        background-color #d9080099
+        border-color #d9080099
+
+.inputMessage
+    width 220px
+    margin-top 5px
+    height 20px
+    padding 0px
+
+.nav-left
+    margin 0px
+    padding 0px

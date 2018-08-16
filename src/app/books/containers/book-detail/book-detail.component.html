@@ -24,22 +24,26 @@
         <p class="cardTextStyle">{{book.volumeInfo?.description}}</p>                        
       </div>
       <div class="col-6">   
-        <div class="favorites">
-            <ul class="checked-list-box list-inline">
-              <li *ngFor="let collection of bookingCollection " class="list-inline-item">
-                <input *ngIf="collection.selected" type="checkbox" checked (change)="toogleCollection(collection)" />
-                <input *ngIf="!collection.selected" type="checkbox" (change)="toogleCollection(collection)"/>
-                  {{collection.name}}
-              </li>
-            </ul>             
-        </div>
-          <div class="buttons">
-              <button [hidden]="isFavorite" class="btn btn-primary btnSite" (click)="addFavorite()" title="Agregar a Favoritos">
-                <i class="fa fa-heart"></i>
-              </button>
-              <button [hidden]="!isFavorite" class="btn btn-primary btnSite" (click)="removeFavorite(favoriteKey)" title="Remover de Favoritos">
-                <i class="fa fa-times"></i>
-              </button>
+        <div class="options">
+          <div class="collections_container">
+              <h4>Administrar Colecciones:</h4>
+              <ul class="checked-list-box list-inline">
+                <li *ngFor="let collection of bookingCollection " class="list-inline-item">
+                  <input *ngIf="collection.selected" type="checkbox" checked (change)="toogleCollection(collection)" />
+                  <input *ngIf="!collection.selected" type="checkbox" (change)="toogleCollection(collection)"/>
+                    {{collection.name}}
+                </li>
+              </ul>             
+          </div>
+          <div class="buttons">              
+                <span class="favorites_title">Favoritos: </span>
+                <button [hidden]="isFavorite" class="btn btn-primary btnSite" (click)="addFavorite()" title="Agregar a Favoritos">
+                  <i class="fa fa-heart"></i>
+                </button>
+                <button [hidden]="!isFavorite" class="btn btn-primary btnSite" (click)="removeFavorite(favoriteKey)" title="Remover de Favoritos">
+                  <i class="fa fa-times"></i>
+                </button>              
+            </div>
           </div>  
           <div class="imgContainer">
               <img class="shadowStyle imgStyle" [src]="book.volumeInfo?.imageLinks?.thumbnail" alt="Book image">        

@@ -1,15 +1,18 @@
 <li>
   <a>
-    <i class="fa fa-book col-xs-6 col-sm-6 col-md-1 col-lg-1" title="Colección"></i>
+    <i class="fa fa-book col-xs-6 col-sm-6 col-md-1 col-lg-1" title="Colecciones"></i>
     <span class="col-xs-6 col-sm-6 col-md-1 col-lg-1">Colección</span>
   </a>
-  <a class="fa fa-plus" aria-hidden="true" (click)="openModal($event, 'collection-add-modal')"></a>
+  <a class="fa fa-plus" aria-hidden="true" (click)="openModal($event, 'collection-add-modal')" title="Agregar Colección"></a>
   <ul class="list-unstyled nav-left">
     <div *ngFor="let collection of collectionList | async">
       <li class="itemCollection">
-        <a routerLink="/main/collections/{{collection.key}}"><span>{{collection.name}}</span></a>
-        <a class="fa fa-times" aria-hidden="true" title="Eliminar" (click)="removeCollection(collection)"></a>
-      </li>
+        <a routerLink="/main/collections/{{collection.key}}">
+          <i class="fa fa-circle" aria-hidden="true" title="Colección {{collection.name}}"></i>
+          <span>{{collection.name}}</span>
+        </a>        
+        <a class="fa fa-times" aria-hidden="true" title="Eliminar Colección {{collection.name}}" (click)="removeCollection(collection)"></a>
+      </li>      
     </div>
   </ul>
 </li>

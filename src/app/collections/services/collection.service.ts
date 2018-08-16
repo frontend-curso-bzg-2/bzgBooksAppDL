@@ -19,11 +19,11 @@ export class CollectionService {
     collection.key=key;
     var updates = {};
     updates['/collections/' + userUID+'/' + key] = collection;
-    return this.rdb.database.ref().update(updates).then(_ => this.alertService.message("Agregado a Colleciones", "success"));
+    return this.rdb.database.ref().update(updates).then(_ => this.alertService.message("Agregado a Colecciones", "success"));
   }
 
   removeCollection(userUID:string, collection: any){
-    this.rdb.database.ref('/collections/' + userUID+'/' + collection.key).remove().then(_ => this.alertService.message("Se ha removido la Collecion", "success") );
+    this.rdb.database.ref('/collections/' + userUID+'/' + collection.key).remove().then(_ => this.alertService.message("Se ha removido la Colección", "success") );
   }
 
   getList(userUID:string) : Observable<Collection[]>{
@@ -33,8 +33,8 @@ export class CollectionService {
     return new Observable<Collection[]>();
   }
 
-  getCollection(userUID:string, collectionId:string):Promise<any>{
-    return this.rdb.database.ref('collections/' + userUID+'/'+collectionId).once("value");
+  getCollection(userUID:string, collectionId:string):Observable<any>{
+    return this.rdb.list('collections/' + userUID+'/'+collectionId).valueChanges();
   }
 
   addBook2Collection(user:string, collection:string, book:any){
@@ -44,6 +44,6 @@ export class CollectionService {
   }
 
   removeBook2Collection(user:string, collection:string, book:any){
-    this.rdb.database.ref('collections/' + user+'/'+collection+'/'+book.id).remove().then(_ => this.alertService.message("Se ha removido el libro de la Coleccion", "success") );
+    this.rdb.database.ref('collections/' + user+'/'+collection+'/items/'+book.id).remove().then(_ => this.alertService.message("Se ha removido el libro de la Coleccion", "success") );
   }
 }
