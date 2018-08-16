@@ -95,7 +95,8 @@ export class BooksListService {
   }
 
   getFavorites() : Observable<any>{
-    return this.favsRef.valueChanges();
+    //return this.favsRef.valueChanges();
+    return new Observable<any>();
   }
 
   deleteFavorites(favorite:any){

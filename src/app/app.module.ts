@@ -20,6 +20,8 @@ import { AppComponent } from './app.component';
 import { environment } from "../environments/environment";
 import { reducers, metaReducer } from './reducer/reducer';
 
+import { DragAndDropModule } from 'angular-draggable-droppable';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -35,6 +37,7 @@ import { reducers, metaReducer } from './reducer/reducer';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     StoreModule,
+    DragAndDropModule,
     StoreDevtoolsModule,
     /*HttpClientInMemoryWebApiModule.forRoot(
       BooksDBService, { dataEncapsulation: false, delay: 1500 }
