@@ -7,6 +7,8 @@ import { Favorite } from '../../models/favorite';
 import { Observable } from '../../../../../node_modules/rxjs';
 import { Store, select } from '@ngrx/store';
 import * as fromAuth from "../../../authentication/reducers/";
+import { CollectionService } from '../../../collections/services/collection.service';
+import {BookingCollection} from '../../models/bookingCollection';
 
 @Component({
   selector: 'book-detail',
@@ -21,9 +23,11 @@ export class BookDetailComponent implements OnInit {
   isFavorite : boolean;
   favoriteKey: string;
   user$:Observable<string> = this.store.pipe(select(fromAuth.getUser));
+  bookingCollection : BookingCollection[];
 
-  constructor(private router: ActivatedRoute, private bookService: BooksListService, private store: Store<fromAuth.State>) {
-    this.book={};    
+  constructor(private router: ActivatedRoute, private bookService: BooksListService,
+     private store: Store<fromAuth.State>, private collectionService: CollectionService) {
+      this.book={};          
    }
 
   ngOnInit() {
@@ -40,7 +44,8 @@ export class BookDetailComponent implements OnInit {
             this.buildBookStarsRating(rating); 
             let industryId = this.book.volumeInfo.industryIdentifiers;
             this.buildRecommendedBooksList(industryId);   
-            this.askIsFavorite(this.book.id);         
+            this.askIsFavorite(this.book.id);   
+            this.buildCollectionList(this.book.id);      
             }
           }
         );
@@ -82,6 +87,27 @@ export class BookDetailComponent implements OnInit {
         this.starList[i] = true;
       }
     }
+  }
+
+  private buildCollectionList(bookId:string){    
+    this.user$.subscribe(user => {
+      this.collectionService.getList(user).subscribe(collections=>{
+        this.bookingCollection = [];
+        collections.forEach((element) => {
+          let booking = new BookingCollection();
+          booking.key = element.key;
+          booking.selected = false;          
+          if(element.items){
+            element.items.forEach(item =>{
+              if(item.id === bookId){
+                booking.selected=true;
+              }
+            });
+          }
+          this.bookingCollection.push(booking);
+        });
+      });
+    });
   }
 
   addFavorite() {

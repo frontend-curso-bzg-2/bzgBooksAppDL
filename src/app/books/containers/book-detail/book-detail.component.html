@@ -24,6 +24,11 @@
         <p class="cardTextStyle">{{book.volumeInfo?.description}}</p>                        
       </div>
       <div class="col-6">   
+        <div class="favorites">
+            <ul *ngFor="let collection of bookingCollection ">
+              <li>{{collection.key}} - {{collection.selected}}</li>
+            </ul>             
+        </div>
           <div class="buttons">
               <button [hidden]="isFavorite" class="btn btn-primary btnSite" (click)="addFavorite()" title="Agregar a Favoritos">
                 <i class="fa fa-heart"></i>
