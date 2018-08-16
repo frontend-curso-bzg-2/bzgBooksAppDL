@@ -10,8 +10,16 @@
   
   <section id="canvas">
     <div class="card-deck">
+      <div class="row">
+          <div *ngFor="let collection of collectionList | async">
+              <div mwlDraggable (dragEnd)="dragEnd($event)" class="alert alert-light">
+                <span>{{collection.name}}</span>
+              </div>
+          </div>
+      </div>
       <div *ngFor="let book of booksList?.items">
-        <div class="card mb-4 shadowStyle cardStyle">
+        <div mwlDroppable class="card mb-4 shadowStyle cardStyle" (drop)="this.droppedData = $event.dropData">
+          <span [hidden]="droppedData">Drop here</span>
           <div class="view overlay">
             <img class="card-img-top imgCard" [src]="book.volumeInfo.imageLinks?.smallThumbnail" alt="Book image">            
           </div>
