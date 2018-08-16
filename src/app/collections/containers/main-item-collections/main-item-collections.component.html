@@ -3,14 +3,15 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/main/books">Home</a></li>        
-        <li class="breadcrumb-item active" aria-current="page">Collections</li>
+        <li class="breadcrumb-item" aria-current="page">Collections</li>
+        <li class="breadcrumb-item active" aria-current="page">{{collection?.name}}</li>
       </ol>
     </nav>
   </section>
   
   <section id="canvas">
     <div class="card-deck">
-      <div *ngFor="let book of booksList">
+      <div *ngFor="let book of collection?.items">
         <div class="card mb-4 shadowStyle cardStyle">
           <div class="view overlay">
             <img class="card-img-top" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="Card image cap">            

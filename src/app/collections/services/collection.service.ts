@@ -9,21 +9,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CollectionService {
-  
-  //collectionsRef: AngularFireList<Collection>;
-  //user: firebase.User;
 
   constructor(private authFire: AngularFireAuth, private rdb: AngularFireDatabase, 
     private alertService: MessagesService) {
-    /*authFire.authState
-      .subscribe(        
-        user => {
-          if(user){
-            this.user = user;
-            this.collectionsRef = rdb.list('collections/' + user.uid);
-          }
-        }
-      );*/
    }
 
   addCollections(userUID:string, collection: Collection) {
@@ -45,5 +33,9 @@ export class CollectionService {
     if(collectionsRef)
       return collectionsRef.valueChanges();
     return new Observable<Collection[]>();
+  }
+
+  getCollection(userUID:string, collectionId:string):Promise<any>{
+    return this.rdb.database.ref('collections/' + userUID+'/'+collectionId).once("value");
   }
 }

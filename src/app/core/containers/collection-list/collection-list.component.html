@@ -7,7 +7,7 @@
   <ul class="list-unstyled nav-left">
     <div *ngFor="let collection of collectionList | async">
       <li class="itemCollection">
-        <a routerLink="/main/collections/{{collection.name}}"><span>{{collection.name}}</span></a>
+        <a routerLink="/main/collections/{{collection.key}}"><span>{{collection.name}}</span></a>
         <a class="fa fa-times" aria-hidden="true" title="Eliminar" (click)="removeCollection(collection)"></a>
       </li>
     </div>
