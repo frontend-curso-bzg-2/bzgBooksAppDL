@@ -14,7 +14,7 @@ export const routes: Routes = [
                 canActivate: [AuthGuardService]
             },
             {
-                path: 'collections',
+                path: 'collections/:id',
                 loadChildren: '../collections/collections.module#CollectionsModule',
                 canActivate: [AuthGuardService]
             },

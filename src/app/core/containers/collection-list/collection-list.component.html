@@ -7,7 +7,7 @@
   <ul class="list-unstyled nav-left">
     <div *ngFor="let collection of collectionList | async">
       <li class="itemCollection">
-        <a routerLink="/main/collections/{{collection.name}}"><span>{{collection.name}}</span></a>
+        <a routerLink="/main/collections/{{collection.key}}"><span>{{collection.name}}</span></a>
         <a class="fa fa-times" aria-hidden="true" title="Eliminar" (click)="removeCollection(collection)"></a>
       </li>
     </div>
@@ -17,7 +17,7 @@
     <div class="modal">
         <div class="modal-body">
             <h3 class="title">Agregar Collection</h3>
-            <form (ngSubmit)="agregarCollection('collection-add-modal');" #collectionForm="ngForm" class="inputForm">
+            <form #collectionForm="ngForm" class="inputForm">
               <div class="form-row">
                 <input type="text" placeholder="Nombre de la Collection" required class="form-control form-control-lg" 
                 [(ngModel)]="collection.name" #collectionName="ngModel" name="collectionName"/>
@@ -28,8 +28,10 @@
               <div>
                 
               </div>
-              <button [disabled]="!collectionForm.form.valid" class="btn btn-primary btnPopup" type="submit">Agregar</button>
-              <button class="btn btn-primary btnPopup" (click)="closeModal('collection-add-modal');">Cancelar</button>
+              <button class="btn btn-primary btnPopup" 
+                    (click)="closeModal('collection-add-modal');">Cancelar</button>
+              <button [disabled]="!collectionForm.form.valid" class="btn btn-primary btnPopup" 
+                      type="button" (click)="agregarCollection('collection-add-modal')">Agregar</button>
             </form>
         </div>      
     </div>  
