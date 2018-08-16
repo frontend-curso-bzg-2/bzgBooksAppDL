@@ -84,14 +84,8 @@ export class BooksListService {
     return this.rdb.database.ref().update(updates).then(_ => this.alertService.message("Agregado a Favoritos", "success"));
   }
 
-<<<<<<< HEAD
-  getFavorites() : Observable<any>{
-    //return this.favsRef.valueChanges();
-    return new Observable<any>();
-=======
   getFavorites(userId:string) : Observable<any>{
     return this.rdb.list('favorites/' + userId).valueChanges();
->>>>>>> 14db1ca755f6ee5d05fd334d46b5250ee37d568b
   }
 
   deleteFavorites(userId:string, favorite:any){
