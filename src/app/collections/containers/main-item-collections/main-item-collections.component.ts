@@ -18,6 +18,10 @@ export class MainItemCollectionsComponent implements OnInit {
   
   constructor(private activatedRouter: ActivatedRoute, private router: Router, private collectionsService:CollectionService,
     private store: Store<fromAuth.State>, private collectionService: CollectionService) { 
+    this.initializeCollection();
+  }
+
+  initializeCollection(){
     this.collection = new Collection();
   }
 
@@ -27,7 +31,7 @@ export class MainItemCollectionsComponent implements OnInit {
       id = params.id 
       this.user$.subscribe(user => {
         this.collectionsService.getCollection(user, id).subscribe(val=>{
-          this.collection = new Collection();
+          this.initializeCollection();
           let obj = val;
           if(obj.length === 2){
             this.collection = {
@@ -62,6 +66,6 @@ export class MainItemCollectionsComponent implements OnInit {
       });
     }
     else
-      return null;
+      return {};
   }
 }

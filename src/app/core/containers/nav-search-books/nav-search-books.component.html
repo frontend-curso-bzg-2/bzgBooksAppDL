@@ -16,7 +16,7 @@
         <div class="col-1">
           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 containerImage">
             <a class="userLink" (click)="openModal($event, 'user-data-modal')" href="">
-              <img [src]="user?.photoURL" class="bigicon userImage" [ngClass]="(user?.photoURL)? '': 'noPicture'">
+              <img [src]="user?.photoURL ||'/assets/noimg.png'" class="bigicon userImage" [ngClass]="(user?.photoURL)? '': 'noPicture'">
               <i class="fa fa-user-circle bigicon userImage" aria-hidden="true" [ngClass]="(user?.photoURL)? 'noPicture': ''"></i>
             </a>
           </div>
@@ -39,7 +39,7 @@
         </div>
         <div class="row">
           <div class="col-3 containerImageModal">
-            <img [src]="user?.photoURL" class="bigicon userImageModal" [ngClass]="(user?.photoURL)? '': 'noPicture'">
+            <img [src]="user?.photoURL||'/assets/noimg.png'" class="bigicon userImageModal" [ngClass]="(user?.photoURL)? '': 'noPicture'">
             <i class="fa fa-user-circle bigicon userImageModal" aria-hidden="true" [ngClass]="(user?.photoURL)? 'noPicture': ''"></i>
           </div>
           <div class="col-6">

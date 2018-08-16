@@ -46,7 +46,7 @@
             </div>
           </div>  
           <div class="imgContainer">
-              <img class="shadowStyle imgStyle" [src]="book.volumeInfo?.imageLinks?.thumbnail" alt="Book image">        
+              <img class="shadowStyle imgStyle" [src]="book?.volumeInfo?.imageLinks?.thumbnail || '/assets/noimg.png'" alt="Book image">        
           </div>             
           <div class="stars">
             <a *ngFor="let item of starList ">  
@@ -63,7 +63,7 @@
           <div *ngFor="let recommendedBook of recommendedList?.items">
               <div class="card mb-4 shadowStyle cardStyle">
                 <div class="view overlay">
-                  <img class="card-img-top imgCard" [src]="recommendedBook.volumeInfo.imageLinks?.smallThumbnail" alt="Book image">            
+                  <img class="card-img-top imgCard" [src]="recommendedBook.volumeInfo.imageLinks?.smallThumbnail|| '/assets/noimg.png'" alt="Book image">            
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">{{recommendedBook.volumeInfo?.title}}</h4>                

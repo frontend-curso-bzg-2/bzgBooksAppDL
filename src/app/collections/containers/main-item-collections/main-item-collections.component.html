@@ -19,7 +19,7 @@
         </div>
         <div class="card mb-4 shadowStyle cardStyle">
           <div class="view overlay">
-              <img class="card-img-top imgCard" [src]="book.volumeInfo.imageLinks?.smallThumbnail" alt="Book image">            
+              <img class="card-img-top imgCard" [src]="book.volumeInfo.imageLinks?.smallThumbnail||'/assets/noimg.png'" alt="Book image">            
             </div>
             <div class="card-body">
               <h4 class="card-title">{{book.volumeInfo?.title}}</h4>
