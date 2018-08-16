@@ -4,6 +4,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { BooksListService } from '../../services/list/books-list.service';
 import { BookList } from '../../models/books';
 import { Favorite } from '../../models/favorite';
+import { Observable } from '../../../../../node_modules/rxjs';
+import { Store, select } from '@ngrx/store';
+import * as fromAuth from "../../../authentication/reducers/";
 
 @Component({
   selector: 'book-detail',
@@ -18,7 +21,6 @@ export class BookDetailComponent implements OnInit {
   isFavorite : boolean;
   favoriteKey: string;
 
-  constructor(private router: ActivatedRoute, private bookService: BooksListService) {
     this.book={};    
    }
 
@@ -45,18 +47,7 @@ export class BookDetailComponent implements OnInit {
   }
 
   private askIsFavorite(id:any) {
-    this.bookService.getFavorites().subscribe(favorites => {
-      if (favorites) {
-        this.isFavorite = false;
-        favorites.forEach(favoriteBook => {
-          if (favoriteBook.book.id === id){
-            this.isFavorite = true;
-            this.favoriteKey = favoriteBook.key;
-          }
-            
-        });
-      }
-    });
+            }              
   }
 
   private buildRecommendedBooksList(industryId: any) {
@@ -80,14 +71,12 @@ export class BookDetailComponent implements OnInit {
   }
 
   addFavorite() {
-    this.bookService.addFavorites(this.book);
   }
 
   removeFavorite(favoriteKey:string){
     let favorite = new Favorite();
     favorite.key=favoriteKey;
     favorite.book=this.book;
-    this.bookService.deleteFavorites(favorite);
   }
 
 }

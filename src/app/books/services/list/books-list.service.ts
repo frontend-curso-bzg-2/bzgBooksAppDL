@@ -25,16 +25,6 @@ export class BooksListService {
   constructor(private http: HttpClient, private alertService: MessagesService, private authFire: AngularFireAuth,
     private rdb: AngularFireDatabase) { 
     this.booksList.next({ kind: "", totalItems: 0, items: [] });
-    this.recommendedBooksList.next({ kind: "", totalItems: 0, items: [] });
-    authFire.authState
-      .subscribe(        
-        user => {
-          if(user){
-            this.user = user;
-            this.favsRef = rdb.list('favorites/' + user.uid);
-          }
-        }
-      );
   }
 
   searchRecommendedBooks(text: string, startIndex?: number, maxResults?: number) {
@@ -84,25 +74,22 @@ export class BooksListService {
       );
   }
     
-  addFavorites(favoriteBook: any) {
-    let createdKey = this.rdb.database.ref().child('favorites/' + this.user.uid).push().key;
     let favorite = new Favorite();
     favorite.key=createdKey;
     favorite.book=favoriteBook;
     var updates = {};
-    updates['favorites/' + this.user.uid+'/' + createdKey] = favorite;
     return this.rdb.database.ref().update(updates).then(_ => this.alertService.message("Agregado a Favoritos", "success"));
   }
 
+<<<<<<< HEAD
   getFavorites() : Observable<any>{
     //return this.favsRef.valueChanges();
     return new Observable<any>();
+=======
+>>>>>>> 14db1ca755f6ee5d05fd334d46b5250ee37d568b
   }
 
-  deleteFavorites(favorite:any){
     var updates = {};
-    updates['favorites/' + this.user.uid+'/' + favorite.key] = favorite;
-    this.rdb.database.ref('favorites/' + this.user.uid+'/' + favorite.key).remove().then(_ =>  this.alertService.message("Eliminado de Favoritos", "success") );
   }
 
   private handleError<T>(operation="operation", result?: T){
