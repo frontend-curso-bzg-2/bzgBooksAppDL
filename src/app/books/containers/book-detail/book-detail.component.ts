@@ -20,7 +20,9 @@ export class BookDetailComponent implements OnInit {
   recommendedList: BookList;
   isFavorite : boolean;
   favoriteKey: string;
+  user$:Observable<string> = this.store.pipe(select(fromAuth.getUser));
 
+  constructor(private router: ActivatedRoute, private bookService: BooksListService, private store: Store<fromAuth.State>) {
     this.book={};    
    }
 
@@ -47,7 +49,19 @@ export class BookDetailComponent implements OnInit {
   }
 
   private askIsFavorite(id:any) {
+    this.user$.subscribe(user => {
+      this.bookService.getFavorites(user).subscribe(favorites => {
+        if (favorites) {
+          this.isFavorite = false;
+          favorites.forEach(favoriteBook => {
+            if (favoriteBook.book.id === id){
+              this.isFavorite = true;
+              this.favoriteKey = favoriteBook.key;
             }              
+          });
+        }
+      });
+    });    
   }
 
   private buildRecommendedBooksList(industryId: any) {
@@ -71,12 +85,18 @@ export class BookDetailComponent implements OnInit {
   }
 
   addFavorite() {
+    this.user$.subscribe(user => {
+      this.bookService.addFavorites(user, this.book);
+    });
   }
 
   removeFavorite(favoriteKey:string){
     let favorite = new Favorite();
     favorite.key=favoriteKey;
     favorite.book=this.book;
+    this.user$.subscribe(user => {
+      this.bookService.deleteFavorites(user, favorite);
+    });
   }
 
 }

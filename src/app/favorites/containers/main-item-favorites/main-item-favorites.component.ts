@@ -13,15 +13,28 @@ import { Observable } from '../../../../../node_modules/rxjs';
 export class MainItemFavoritesComponent implements OnInit {
 
   favoritesList: any;
+  user$:Observable<string> = this.store.pipe(select(fromAuth.getUser));
   
   constructor(private booksService:BooksListService, private store: Store<fromAuth.State>) { 
     this.favoritesList = [];
   }
 
   ngOnInit() {
+    this.user$.subscribe(user => {
+      this.booksService.getFavorites(user).subscribe(
+            favorites => {        
+              if(favorites){
+                this.favoritesList = favorites;
+              }        
+            }
+      );
+    });
   } 
 
   removeFavorite(favorite:any){
+    this.user$.subscribe(user => {
+      this.booksService.deleteFavorites(user, favorite);
+    });
   }
 
 }

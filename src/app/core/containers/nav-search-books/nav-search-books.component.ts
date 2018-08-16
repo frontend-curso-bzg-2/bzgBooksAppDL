@@ -7,6 +7,7 @@ import * as fromRoot from "../../../reducer/reducer";
 import {User} from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ModalService } from '../../../modal/services';
+import * as fromAuth from "../../../authentication/reducers/";
 
 @Component({
   selector: 'nav-search-books',
@@ -17,6 +18,8 @@ export class NavSearchBooksComponent implements OnInit {
 
   actionAside$:Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav));
   state : string = "open";
+  user : User;
+  observableUser$ : Observable<string> = this.store.pipe(select(fromAuth.getUser));
   numFavorites: any;
 
   constructor(private bookListService:BooksListService, private store: Store<fromRoot.State>,
@@ -31,6 +34,13 @@ export class NavSearchBooksComponent implements OnInit {
         this.user = user;     
       }
     );
+    this.observableUser$.subscribe(user => {
+      this.bookListService.getFavorites(user).subscribe(
+        (favorites)=>{
+          this.numFavorites=favorites.length;
+        }
+      );
+    });
   }
 
   closeAside(){
