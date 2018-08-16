@@ -16,13 +16,13 @@
 <modal id="collection-add-modal">
     <div class="modal">
         <div class="modal-body">
-            <h3 class="title">Agregar Collection</h3>
+            <h3 class="title">Agregar Colección</h3>
             <form #collectionForm="ngForm" class="inputForm">
               <div class="form-row">
-                <input type="text" placeholder="Nombre de la Collection" required class="form-control form-control-lg" 
+                <input type="text" placeholder="Nombre de la Colección" required class="form-control form-control-lg" 
                 [(ngModel)]="collection.name" #collectionName="ngModel" name="collectionName"/>
                 <div [hidden]="collectionName.valid || collectionName.pristine" class="alert alert-danger inputMessage" role="alert">
-                  Collecction Incorrecta
+                  Colección Incorrecta
                 </div>
               </div>
               <div>

@@ -7,6 +7,8 @@ export interface ICollection{
 export class Collection implements ICollection{
     name: string;
     key: string;
-    items: any[];
-    constructor(){}
+    items: any;
+    constructor(){
+        this.items = {};
+    }
 }

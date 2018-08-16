@@ -23,8 +23,6 @@ export class CollectionService {
   }
 
   removeCollection(userUID:string, collection: any){
-    var updates = {};
-    updates['/collections/' + userUID+'/' + collection.key] = collection;
     this.rdb.database.ref('/collections/' + userUID+'/' + collection.key).remove().then(_ => this.alertService.message("Se ha removido la Collecion", "success") );
   }
 
@@ -37,5 +35,15 @@ export class CollectionService {
 
   getCollection(userUID:string, collectionId:string):Promise<any>{
     return this.rdb.database.ref('collections/' + userUID+'/'+collectionId).once("value");
+  }
+
+  addBook2Collection(user:string, collection:string, book:any){
+    var updates = {};
+    updates['collections/' + user+'/'+collection+'/items/'+book.id] = book;
+    return this.rdb.database.ref().update(updates).then(_ => this.alertService.message("Libro agregado a la Coleccion", "success"));
+  }
+
+  removeBook2Collection(user:string, collection:string, book:any){
+    this.rdb.database.ref('collections/' + user+'/'+collection+'/'+book.id).remove().then(_ => this.alertService.message("Se ha removido el libro de la Coleccion", "success") );
   }
 }

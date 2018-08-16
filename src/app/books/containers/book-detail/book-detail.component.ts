@@ -9,6 +9,8 @@ import { Store, select } from '@ngrx/store';
 import * as fromAuth from "../../../authentication/reducers/";
 import { CollectionService } from '../../../collections/services/collection.service';
 import {BookingCollection} from '../../models/bookingCollection';
+import { Collection } from '../../../collections/models/collections';
+import { ArrayType } from '../../../../../node_modules/@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'book-detail',
@@ -95,14 +97,15 @@ export class BookDetailComponent implements OnInit {
         this.bookingCollection = [];
         collections.forEach((element) => {
           let booking = new BookingCollection();
+          booking.name=element.name;
           booking.key = element.key;
           booking.selected = false;          
           if(element.items){
-            element.items.forEach(item =>{
-              if(item.id === bookId){
+            if(typeof element.items === "object"){
+              if(element.items[bookId]){
                 booking.selected=true;
               }
-            });
+            }
           }
           this.bookingCollection.push(booking);
         });
@@ -123,6 +126,19 @@ export class BookDetailComponent implements OnInit {
     this.user$.subscribe(user => {
       this.bookService.deleteFavorites(user, favorite);
     });
+  }
+
+  toogleCollection(collection:BookingCollection){
+    if(!collection.selected){
+      this.user$.subscribe(user => {
+        this.collectionService.addBook2Collection(user, collection.key, this.book)
+      });
+    }
+    else{
+      this.user$.subscribe(user => {
+        this.collectionService.removeBook2Collection(user, collection.key, this.book)
+      });
+    }
   }
 
 }
